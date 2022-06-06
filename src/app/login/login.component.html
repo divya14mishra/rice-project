@@ -1,0 +1,29 @@
+<div class="main-content center-screen">
+  <div class="card-header card-header-danger">
+    <h4 class="card-title">RICE</h4>
+    <p class="card-category">User Portal</p>
+</div>
+  <mat-card>
+    <mat-card-title>RICE PORTAL</mat-card-title>
+    <mat-card-content>
+      <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Username</mat-label>
+          <input matInput  name="userName" [(ngModel)]="userName" />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput name="userPassword" [(ngModel)]="userPassword" />
+        </mat-form-field><br>
+
+        <button mat-raised-button type="button" color="warn" (click)="onLoginBtnPressed()">
+          Login
+        </button>
+        <button mat-raised-button type="button" color="warn" (click)="onSignup()">
+          Sign Up
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
