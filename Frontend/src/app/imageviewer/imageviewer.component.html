@@ -1,0 +1,18 @@
+<div *ngIf="open" class="viewer-container">
+  <div class="viewer-content">
+    
+    <div class="row">
+      <a class="close-button" (click)="close.emit()">
+        <i class="fa fas fa-chevron-left fa-5x fa-fw left-icon"></i>Close Image
+      </a>
+    </div>
+    <div class="row">
+      <a class="close-button" (click)="sendForAnalytics.emit()">
+        <i class="fa fas fa-chevron-left fa-5x fa-fw left-icon"></i>Close
+      </a>
+    </div>
+
+    <!-- <img class="main-img" src="data:image/gif;base64,{{ imageURL }}" /> -->
+    <img class="main-img" src="{{imageURL}}" />
+  </div>
+</div>

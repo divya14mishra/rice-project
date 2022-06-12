@@ -1,0 +1,26 @@
+<div>
+  <h4>Metadata</h4>
+
+  <ul *ngFor="let val of fileData.metaData; let index = index;">
+    <li>{{val}}</li>
+  </ul>
+
+  <h4>Scan Parameters</h4>
+
+  <ul *ngFor="let val of fileData.scanParameter; let index = index;">
+    <li>{{val}}</li>
+  </ul>
+
+  <h4>Analytics Output</h4>
+  <ul *ngFor="let val of fileData.analyticsOutput; let index = index;">
+
+
+    <li>{{val}}</li>
+  </ul>
+
+  <h4>Share Status</h4>
+  <ul *ngFor="let val of fileData.shareStatus; let index = index;">
+
+    <li>{{val}}</li>
+  </ul>
+</div>

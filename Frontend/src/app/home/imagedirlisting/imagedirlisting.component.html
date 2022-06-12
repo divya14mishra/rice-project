@@ -1,0 +1,83 @@
+<div>
+  <div class="main-content">
+    <div class="container-fluid">
+      <app-imageviewer
+        [imageURL]="imageURLOrBuffer"
+        [open]="viewerOpen"
+        (close)="viewerOpen = false"
+        (sendForAnalytics)="sendCurrentImageForAnalytics()"
+      ></app-imageviewer>
+      <div class="row">
+        <div cols="4" rowHeight="1:1">
+          <li *ngFor="let html of htmlString">
+            <button mat-raised-button (click)="getImage($event)">
+              {{ html }}
+            </button>
+          </li>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-10 col-md-12">
+          <div class="card">
+            <div class="card-header card-header-danger">
+              <h4 class="card-title">Experiment Status</h4>
+              <p class="card-category">Available files</p>
+            </div>
+            <div class="card-body table-responsive">
+              <table class="table table-hover">
+                <thead class="text">
+                  <th>File Name</th>
+                  <th>Status</th>
+                  <th>Output (Dice Score)</th>
+                  <th>Action</th>
+                  <th>Share with everybody</th>
+                  <th>Preview</th>
+                </thead>
+                <tbody>
+                  <tr  *ngFor="let item of fileList; let index = index;">
+                    <td>
+                      <a
+                        class="clickable"
+                        [routerLink]=""
+                        (click)="showFileDetail(index)"
+                        >{{item.fileName}}</a
+                      >
+                    </td>
+                    <td>{{item.status}}</td>
+                    <td>{{item.diceOutput}}</td>
+                    <td>
+                      <a
+                        [ngClass]="{'clickable':!isAlreadyAnalyzed(index)}"
+                        [routerLink]=""
+                        (click)="sendToAnalytics(index)"
+                        >{{getActionLabel(index)}}</a
+                      >
+                    </td>
+                    <td>{{item.share}}</td>
+                    <td>
+                      <a
+                        class="clickable"
+                        [routerLink]=""
+                        (click)="getImage(index)"
+                        >Preview</a
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="example-button-container md-fab-bottom-right" *ngIf="this.recommendationAvailable">
+    <button
+      mat-fab
+      color="warn"
+      (click)="showRecommendation()"
+    >
+      <mat-icon>forum</mat-icon>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,366 @@
+{
+	"info": {
+		"_postman_id": "d6ee2b0c-1871-4ae4-9b44-6dc6a710e2b6",
+		"name": "sem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Set Spot Size",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"value\": 6.0\r\n}"
+				},
+				"url": {
+					"raw": "ec2-18-119-107-254.us-east-2.compute.amazonaws.com/set_sem_spot_size",
+					"host": [
+						"ec2-18-119-107-254",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"set_sem_spot_size"
+					],
+					"query": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Spot Size",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "ec2-18-119-107-254.us-east-2.compute.amazonaws.com/get_sem_spot_size",
+					"host": [
+						"ec2-18-119-107-254",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"get_sem_spot_size"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set Brightness",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"value\": 5.0\r\n}"
+				},
+				"url": {
+					"raw": "ec2-18-119-107-254.us-east-2.compute.amazonaws.com/set_sem_brightness?value=5.0",
+					"host": [
+						"ec2-18-119-107-254",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"set_sem_brightness"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "5.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Brightness",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "ec2-18-119-107-254.us-east-2.compute.amazonaws.com/get_sem_brightness",
+					"host": [
+						"ec2-18-119-107-254",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"get_sem_brightness"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Contrast",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "ec2-18-119-107-254.us-east-2.compute.amazonaws.com/get_sem_contrast",
+					"host": [
+						"ec2-18-119-107-254",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"get_sem_contrast"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set Contrast",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"value\": 5.0\r\n}"
+				},
+				"url": {
+					"raw": "ec2-18-119-107-254.us-east-2.compute.amazonaws.com/set_sem_contrast?value=5.0",
+					"host": [
+						"ec2-18-119-107-254",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"set_sem_contrast"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "5.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Rotation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "ec2-18-119-107-254.us-east-2.compute.amazonaws.com/get_sem_rotation",
+					"host": [
+						"ec2-18-119-107-254",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"get_sem_rotation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set Rotation",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"value\": 5.0\r\n}"
+				},
+				"url": {
+					"raw": "ec2-18-119-107-254.us-east-2.compute.amazonaws.com/set_sem_rotation?value=5.0",
+					"host": [
+						"ec2-18-119-107-254",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"set_sem_rotation"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "5.0"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auto Contrast Brightness",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "ec2-18-119-107-254.us-east-2.compute.amazonaws.com/sem_auto_contrast_brightness",
+					"host": [
+						"ec2-18-119-107-254",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"sem_auto_contrast_brightness"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Auto Focus",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "ec2-18-119-107-254.us-east-2.compute.amazonaws.com/sem_auto_focus",
+					"host": [
+						"ec2-18-119-107-254",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"sem_auto_focus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Move Sample",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"x\": 5.0,\r\n    \"y\": 3.0\r\n}"
+				},
+				"url": {
+					"raw": "ec2-18-119-107-254.us-east-2.compute.amazonaws.com/sem_move_sample",
+					"host": [
+						"ec2-18-119-107-254",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"sem_move_sample"
+					],
+					"query": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

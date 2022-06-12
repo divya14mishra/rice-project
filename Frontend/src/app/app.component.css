@@ -1,0 +1,50 @@
+h1 {
+  margin: auto;
+  text-align: center;
+}
+
+#titleBox {
+  background-color: #98FB98;
+  padding: 10px;
+}
+
+#mainBox {
+  padding: 10px;
+}
+
+#formBox {
+  border: 1px solid gray;
+  width: 300px;
+  padding: 10px 5px 5px 10px;
+
+  box-shadow: inset 1px 1px 1px 1px #787878;
+}
+
+#imageBox {
+  box-shadow: 1px 1px 1px 1px #787878;
+  width: 60%;
+  margin: auto;
+}
+
+#photoBox {
+  display: none;
+}
+
+#loginBtn {
+  background-color: #98FB98;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.bttn {
+ border: 1px solid orange;
+ border-radius: 7px;
+ width: 70px;
+ box-shadow: 2px 2px 2px 2px #787878;
+ margin-bottom: 10px;
+ margin-top: 10px;
+ text-align: center;
+}

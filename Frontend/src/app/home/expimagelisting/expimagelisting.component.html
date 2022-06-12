@@ -1,0 +1,22 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <app-imageviewer
+      [imageURL]="imageURL"
+      [open]="viewerOpen"
+      (close)="viewerOpen = false"
+    ></app-imageviewer>
+      <mat-grid-list cols="4" rowHeight="1:1">
+        <mat-grid-tile
+          *ngFor="let item of imageList; let index = index;"
+          (click)="onImageClicked(item)"
+          style="background-color: gainsboro"
+        >
+          <img
+            src="{{ item }}"
+            alt=""
+            style="object-fit: cover; width: 100%; height: 100%"
+          />
+        </mat-grid-tile>
+      </mat-grid-list>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div>
+  <p>Dear User,</p>
+  <p>
+    Based on your image analytics results, we recommend that you change your
+    parameter setting as follow:
+  </p>
+  <div>
+    <h4>Recommendations</h4>
+
+    <ul *ngFor="let val of recommendationList; let index = index">
+      <li>{{ val.actionMessage }}</li>
+      <!-- <mat-radio-group aria-label="Select an option">
+          <mat-radio-button  *ngFor="let action of val.actionsOptions;  let  btnIndex = index" [value]="action.actionOptionId">{{action.actionName}}</mat-radio-button>
+      </mat-radio-group> -->
+
+      <div class="form-check form-check-radio"  *ngFor="let action of val.actionsOptions;  let  btnIndex = index">
+        <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="{{val.actionId}}" id="{{action.actionOptionId}}" value="1" >
+            {{action.actionName}}
+            <span class="circle">
+                <span class="check"></span>
+            </span>
+        </label>
+    </div>
+
+    </ul>
+    <button
+      mat-raised-button
+      type="button"
+      class="btn btn-danger pull-right"
+      (click)="onSubmitRecommendation()"
+    >
+      Confirm
+    </button>
+    
+  </div>
+</div>
