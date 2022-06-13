@@ -1,18 +1,30 @@
 const { find_one } = require("../../database_services/mongo_crud");
 const bcrypt = require("bcrypt");
-const saltRounds = 10;
 
 const authenticateUserPassword = async (req, res) => {
   try {
-    let { username, password } = req.body;
-
+    let { email, password } = req.body;
     let query_params = {
-      modelname : "user_data",
-      where: { username: username },
+      modelName: "user_data",
+      where: { email: email },
     };
     check_user = await find_one(query_params);
-    console.log(check_user);
-
+    if (check_user == null) {
+      console.log("no user found with this email");
+      return res.json({
+        status: 2,
+        msgType: "No user found with this email",
+      });
+    } else {
+      const hash = check_user.password;
+      const okk = bcrypt.compareSync(password, hash);
+      if (okk == false) {
+        return res.json({
+          status: 2,
+          msgType: "Password incorrect",
+        });
+      }
+    }
     return res.json({
       status: 1,
       msgType: "success",

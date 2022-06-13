@@ -1,3 +1,4 @@
+import { CreatePasswordComponent } from './create-password/create-password.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,6 +21,7 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'createPassword', component: CreatePasswordComponent},
   { path: 'unauthorized', component: RestrictedrouteComponent },
   { path: 'signup', component: SignupComponent },
   { path: '**', component: InvalidrouteComponent },

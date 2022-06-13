@@ -1,38 +1,42 @@
-
-<div class="main-content center-screen ">
-        <div class="row fix-width-form">
-            <div class="col-md-12">
-                <div class="card center-item">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title">RICE</h4>
-                        <p class="card-category">User Portal</p>
-                    </div>
-                    <div class="card-body">
-                        <form>
-                            <div class="row top-margin">
-                                <div class="col-md-12" >
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Username" type="text" [(ngModel)]="userName" required>
-                                  </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="row top-margin">
-                              <div class="col-md-12">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Password" type="password" [(ngModel)]="userPassword" required>
-                                  </mat-form-field>
-                                </div>
-                            </div>
-        
-                            <button mat-raised-button type="button"  class="btn btn-danger pull-right"  (click)="onLoginBtnPressed()">Login</button>
-                            <button mat-raised-button type="button"  class="btn btn-danger pull-right" (click)="onSignup()">Sign Up</button>
-
-                            <div class="clearfix"></div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            
+<div class="main-content center-screen">
+  <div class="row fix-width-form">
+    <div class="col-md-12">
+      <div class="card center-item">
+        <div class="card-header card-header-danger">
+          <h4 class="card-title">RICE</h4>
+          <p class="card-category">User Portal</p>
         </div>
+        <div class="card-body">
+          <form class="example-form" (submit)="onLoginBtnPressed(postform)" #postform="ngForm">
+            <div class="row top-margin">
+              <div class="col-md-12">
+                <mat-form-field class="example-full-width">
+                  <!-- <input matInput placeholder="Email" email="true" name="email" type="text" [(ngModel)]="userEmail" required> -->
+                  <input matInput type="email" placeholder="Email" ngModel email="true" name="email" #email="ngModel"
+                    required />
+                  <mat-error *ngIf="email.invalid">Enter a valid email!</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row top-margin">
+              <div class="col-md-12">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Password" type="password" name="userPassword" ngModel  required />
+                </mat-form-field>
+              </div>
+            </div>
+
+            <button mat-raised-button class="btn btn-danger pull-right" type="submit" color="warn">
+              Login
+            </button>
+            <button mat-raised-button type="button" class="btn btn-danger pull-right" (click)="onSignup()">
+              Sign Up
+            </button>
+
+            <div class="clearfix"></div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-  
+</div>

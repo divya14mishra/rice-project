@@ -22,6 +22,7 @@ import { RestrictedrouteComponent } from './restrictedroute/restrictedroute.comp
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmdialogComponent } from './components/dialogs/confirmdialog/confirmdialog.component';
 import { FiledetaildialogComponent } from './components/dialogs/filedetaildialog/filedetaildialog.component';
+import { CreatePasswordComponent } from './create-password/create-password.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { FiledetaildialogComponent } from './components/dialogs/filedetaildialog
     RestrictedrouteComponent,
     ConfirmdialogComponent,
     FiledetaildialogComponent,
-    SignupComponent
+    SignupComponent,
+    CreatePasswordComponent
   ],
   imports: [
     BrowserModule,

@@ -34,6 +34,7 @@ export class SignupComponent implements OnInit {
       usertype : this.usertype
     }
     console.log(data)
+    
     for (let val in data) {
       console.log(data[val]);
       if(data[val]==''){
@@ -42,7 +43,7 @@ export class SignupComponent implements OnInit {
       }
     }
     this.showNotification('Profile Created', 2)
-    this.router.navigate(['home']);
+    this.router.navigate(['createPassword']);
     return
   }
 

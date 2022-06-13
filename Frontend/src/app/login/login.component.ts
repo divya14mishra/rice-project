@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 declare var $:any;
@@ -9,40 +10,43 @@ declare var $:any;
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  userName = '';
-  userPassword = '';
   
   constructor(public router: Router) { }
 
   ngOnInit(): void {
   }
 
-  onLoginBtnPressed(): void {
-    console.log(this.userName , this.userPassword);
-    localStorage.setItem("auth", "logged");
-    if (this.userName == 'admin')
-    {
-      if(this.userPassword=='admin')
-      {
-        localStorage.setItem("userType", "admin");
-        this.router.navigate(['home']);
-      }
-      else
-      this.showNotification("Username/Password not matched")
+  onLoginBtnPressed(form:NgForm): void {
+    let userEmail = form.value.email
+    let userPassword  = form.value.userPassword
+    console.log("--->>",userEmail , userPassword);
+    if(userEmail=='' || userPassword==''){
+      this.showNotification("All fields are required!")
     }
-    else if (this.userName == 'user1')
-    {
-      if(this.userPassword=='123456')
-      {
-        localStorage.setItem("userType", "user");
-        this.router.navigate(['home']);
-      }
-      else
-      this.showNotification("Username/Password not matched")
-    }
-    else
-    this.showNotification("No user with "+this.userPassword+" found")
+    // localStorage.setItem("auth", "logged");
+
+    // if (this.userName == 'admin')
+    // {
+    //   if(this.userPassword=='admin')
+    //   {
+    //     localStorage.setItem("userType", "admin");
+    //     this.router.navigate(['home']);
+    //   }
+    //   else
+    //   this.showNotification("Username/Password not matched")
+    // }
+    // else if (this.userName == 'user1')
+    // {
+    //   if(this.userPassword=='123456')
+    //   {
+    //     localStorage.setItem("userType", "user");
+    //     this.router.navigate(['home']);
+    //   }
+    //   else
+    //   this.showNotification("Username/Password not matched")
+    // }
+    // else
+    // this.showNotification("No user with "+this.userPassword+" found")
   }
 
   onSignup(): void {
