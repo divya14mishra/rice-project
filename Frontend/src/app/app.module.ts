@@ -14,7 +14,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
-import { RegisterComponent } from './register/register.component';
 import { HomeLayoutComponent } from './home/home-layout.component';
 import { ComponentsModule } from './components/components.module';
 import { InvalidrouteComponent } from './invalidroute/invalidroute.component';
@@ -28,7 +27,6 @@ import { CreatePasswordComponent } from './create-password/create-password.compo
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent,
     HomeLayoutComponent,
     InvalidrouteComponent,
     RestrictedrouteComponent,

@@ -20,6 +20,8 @@ import { ImageviewerComponent } from '../imageviewer/imageviewer.component';
 import { UsermanagementComponent } from './usermanagement/usermanagement.component';
 import { ImagedirlistingComponent } from './imagedirlisting/imagedirlisting.component';
 import { RecommendationdialogComponent } from '../components/dialogs/recommendationdialog/recommendationdialog.component';
+import { SshKeyComponent } from './ssh-key/ssh-key.component';
+import { UserDataComponent } from './user-data/user-data.component';
 
 
 
@@ -56,7 +58,9 @@ import { RecommendationdialogComponent } from '../components/dialogs/recommendat
     ImageviewerComponent,
     UsermanagementComponent,
     ImagedirlistingComponent,
-    RecommendationdialogComponent
+    RecommendationdialogComponent,
+    SshKeyComponent,
+    UserDataComponent
   ]
 })
 

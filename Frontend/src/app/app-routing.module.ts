@@ -6,7 +6,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeLayoutComponent } from './home/home-layout.component';
 import { InvalidrouteComponent } from './invalidroute/invalidroute.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { RestrictedrouteComponent } from './restrictedroute/restrictedroute.component';
 import { AuthService } from './services/auth-service.service';
 import { SignupComponent } from './signup/signup.component';
@@ -20,7 +19,6 @@ const routes: Routes = [
     }]
   },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
   { path: 'createPassword', component: CreatePasswordComponent},
   { path: 'unauthorized', component: RestrictedrouteComponent },
   { path: 'signup', component: SignupComponent },

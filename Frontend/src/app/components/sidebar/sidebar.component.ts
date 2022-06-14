@@ -8,10 +8,12 @@ declare interface RouteInfo {
     class: string;
 }
 export const ROUTES: RouteInfo[] = [
-    // { path: 'dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
+    { path: 'dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
     { path: 'experiments', title: 'Experiments',  icon:'collections', class: '' },
-    { path: 'user-profile', title: 'Profile',  icon:'person', class: '' },
+    // { path: 'user-profile', title: 'Profile',  icon:'person', class: '' },  
     { path: 'user-management', title: 'User Management',  icon:'group', class: '' },
+    { path: 'ssh-key', title: 'SSH-key',  icon:'key', class: '' },
+    { path: 'user-data', title: 'Data',  icon:'dataset', class: '' },
 ];
 
 @Component({
@@ -26,8 +28,8 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     var isAdmin=localStorage.getItem('userType');
-
     this.menuItems = ROUTES.filter(menuItem => menuItem);
+    console.log("---->>",this.menuItems)
     if(isAdmin!='admin')
     {
      this.menuItems= this.menuItems.filter(item=>item.path!='user-management');
