@@ -14,12 +14,10 @@ export class Signup {
      usertype: String;
 }
 
-export class Newpassword {
-     email: String;
-     password1: String;
-     password2: String;
-
-}
+// export class SavePassword {
+//      email: String;
+//      password: String;
+// }
 
 export class Login {
      email: String;

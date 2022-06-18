@@ -1,6 +1,8 @@
 import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlluserService } from './../services/alluser.service';
+
 
 declare var $: any;
 
@@ -10,8 +12,9 @@ declare var $: any;
   styleUrls: ['./create-password.component.css']
 })
 export class CreatePasswordComponent implements OnInit {
+  password_data: any;
 
-  constructor(public router: Router) { }
+  constructor(private alluserService: AlluserService, public router: Router) { }
 
   ngOnInit(): void {
   }
@@ -25,9 +28,11 @@ export class CreatePasswordComponent implements OnInit {
       this.showNotification('Password do not matched', 4)
     }
     else{
-      // if email exist in db update user password
-      console.log("navigate to home")
-      this.router.navigate(['home']);
+      var save_pass_data = {
+        email : email,
+        password : pass1
+      }
+      this.saveUserPass(save_pass_data);
     }
   }
   
@@ -43,6 +48,24 @@ export class CreatePasswordComponent implements OnInit {
             from: 'bottom',
             align: 'right'
         }
+    });
+  }
+
+  saveUserPass(data) {
+    this.alluserService.savePassword(data).subscribe((data: any[]) => {
+      this.password_data = data;
+      console.log('--saveUserPass call-->>>>', this.password_data)
+      if (this.password_data.status == '1') {
+        this.router.navigate(['home']);
+      }
+      else if (this.password_data.status == '2') {
+        this.showNotification(this.password_data.msg, 4)
+        return
+      }
+      else {
+        this.showNotification(this.password_data.msg, 4)
+      }
+      return;
     });
   }
 

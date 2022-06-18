@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { saveUserPassword } = require('../controller/savepassword/savepass');
 
-router.post("/newpassword", saveUserPassword );
+router.post("/savepassword", saveUserPassword );
 
 
 module.exports = router;

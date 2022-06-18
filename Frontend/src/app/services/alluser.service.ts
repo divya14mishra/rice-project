@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Signup } from '../model/filemodel'
+import { Signup,Login, } from '../model/filemodel'
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +14,18 @@ export class AlluserService {
   }
   
   signupData(signup: Signup) {
-    console.log('createProduct ' + JSON.stringify(signup));
+    console.log('signupData ' + JSON.stringify(signup));
     return this.httpClient.post('http://localhost:3000/signup', signup)
+  }
+
+  loginData(login: Login){
+    console.log('loginData ' + JSON.stringify(login));
+    return this.httpClient.post('http://localhost:3000/login', login)
+  }
+
+  savePassword(login: Login){
+    console.log('savePassword ' + JSON.stringify(login));
+    return this.httpClient.post('http://localhost:3000/savepassword', login)
   }
 
 }

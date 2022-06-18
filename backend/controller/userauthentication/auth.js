@@ -9,11 +9,13 @@ const authenticateUserPassword = async (req, res) => {
       where: { email: email },
     };
     check_user = await find_one(query_params);
+    console.log('-->>user-->>',check_user)
     if (check_user == null) {
-      console.log("no user found with this email");
+      console.log("No user found with this email");
       return res.json({
         status: 2,
-        msgType: "No user found with this email",
+        msgType: "success",
+        msg:'No user found with this email',
       });
     } else {
       const hash = check_user.password;
@@ -21,7 +23,8 @@ const authenticateUserPassword = async (req, res) => {
       if (okk == false) {
         return res.json({
           status: 2,
-          msgType: "Password incorrect",
+          msgType: "success",
+          msg: 'Password incorrect'
         });
       }
     }

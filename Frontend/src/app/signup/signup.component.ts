@@ -45,7 +45,7 @@ export class SignupComponent implements OnInit {
     }
     var phoneno = /^\d{10}$/;
     if (data.contact.match(phoneno)) {
-      this.all_users(data);
+      this.saveUsersData(data);
     }
     else {
       this.showNotification('Contact is not correct!', 4)
@@ -53,7 +53,7 @@ export class SignupComponent implements OnInit {
     }
   }
 
-  all_users(data) {
+  saveUsersData(data) {
     this.alluserService.signupData(data).subscribe((data: any[]) => {
       this.signup_data = data;
       console.log('--signup call-->>>>', this.signup_data.status, this.signup_data.msgType)
