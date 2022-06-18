@@ -10,8 +10,7 @@ export class AuthService implements CanActivate {
 
   canActivate(): boolean {
     let auth = localStorage.getItem("auth");
-    console.log("Auth : "+auth);
-    if (auth != null && auth.length > 0)
+    if (auth == 'true')
       return true;
     else {
       this.router.navigate(['login']);

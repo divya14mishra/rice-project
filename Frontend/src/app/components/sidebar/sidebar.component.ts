@@ -29,7 +29,6 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
     var isAdmin=localStorage.getItem('userType');
     this.menuItems = ROUTES.filter(menuItem => menuItem);
-    console.log("---->>",this.menuItems)
     if(isAdmin!='admin')
     {
      this.menuItems= this.menuItems.filter(item=>item.path!='user-management');

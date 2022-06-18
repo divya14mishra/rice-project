@@ -35,19 +35,20 @@ export class LoginComponent implements OnInit {
     console.log("--->>", userEmail, userPassword);
     if (userEmail == '' || userPassword == '') {
       this.showNotification("All fields are required!", 4)
-      return
     }
+
     this.verifyLogin(data);
   }
 
   verifyLogin(data) {
     this.alluserService.loginData(data).subscribe((data: any[]) => {
       this.logindata = data;
-      console.log('--verifyLogin call-->>>>', this.logindata)
-      if (this.logindata.status == 1) {
+      console.log('--verifyLogin call-->>>>', this.logindata.status, this.logindata.msgType)
+      if (this.logindata.status == '1') {
+        localStorage.setItem("auth", "true");
         this.router.navigate(['home']);
       }
-      else if (this.logindata.status == 2) {
+      else if (this.logindata.status == '2') {
         this.showNotification(this.logindata.msg, 4)
         return
       }
@@ -57,7 +58,6 @@ export class LoginComponent implements OnInit {
       return;
     });
   }
-
   onSignup(): void {
     this.router.navigate(['signup']);
   }
