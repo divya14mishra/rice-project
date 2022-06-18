@@ -7,7 +7,7 @@
           <p class="card-category">User Portal</p>
         </div>
         <div class="card-body">
-          <form
+          <form 
             class="example-form"
             (submit)="CreateProfile(postform)"
             #postform="ngForm"
@@ -38,7 +38,7 @@
                   <input matInput ngModel name="lastname" required/>
                 </mat-form-field>
               </div>
-              <div class="col-6">
+              <div class="col-12">
                 <mat-form-field class="example-full-width" appearance="fill">
                   <mat-label>Address</mat-label>
                   <input matInput ngModel name="address"  required/>
@@ -47,7 +47,7 @@
               <div class="col-6">
                 <mat-form-field class="example-full-width" appearance="fill">
                   <mat-label>Contact</mat-label>
-                  <input matInput ngModel name="contact"  required/>
+                  <input matInput ngModel name="contact" #contact="ngModel" placeholder="5735489873" required/>
                 </mat-form-field>
               </div>
               <div class="col-6">
@@ -74,7 +74,7 @@
                   <input matInput ngModel name="inputCountry" required />
                 </mat-form-field>
               </div>
-              <div class="col-6">
+              <!-- <div class="col-6">
                 <mat-form-field appearance="fill">
                   <mat-label>User Type</mat-label>
                   <mat-select name="usertype" [(ngModel)]="usertype" required>
@@ -82,7 +82,7 @@
                     <mat-option value="User">User</mat-option>
                   </mat-select>
                 </mat-form-field>
-              </div>
+              </div> -->
               <div class="col-6">
                 <button mat-raised-button type="submit" color="warn">
                   Create

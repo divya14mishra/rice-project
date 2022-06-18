@@ -26,8 +26,6 @@ export class FileService {
     await this.http.get<FileDTO[]>( this.baseURL + "/retrieve_files").toPromise().then(data => fileList = data)
       .catch((err: HttpErrorResponse) => {
         console.log("Error while fetching file list")
-       
-
       });
 
     console.log(fileList[0]);

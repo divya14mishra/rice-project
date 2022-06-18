@@ -1,5 +1,31 @@
 import { jsonObject, jsonMember, jsonArrayMember, jsonMapMember, TypedJSON } from 'typedjson';
 
+export class Signup {
+     username: String
+     email: String;
+     firstname: String;
+     lastname: String;
+     address: String;
+     contact: Number;
+     inputState: String;
+     inputCity: String;
+     inputZip: String;
+     inputCountry: String;
+     usertype: String;
+}
+
+export class Newpassword {
+     email: String;
+     password1: String;
+     password2: String;
+
+}
+
+export class Login {
+     email: String;
+     userPassword: String;
+}
+
 export class FileDTO {
      public fileId: string;
      public fileName: string;

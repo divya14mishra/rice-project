@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class FileDTO {}\nexport class FileDetail {}\nexport class RecommendationDTO {}\nexport class RecommendationActionsDTO {}","map":null,"metadata":{},"sourceType":"module"}

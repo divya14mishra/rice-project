@@ -178,5 +178,7 @@ app.use("/", require("./routes/user_auth"));
 //     resp.send(final_data)
 // });
 
-app.listen(3000);
-console.log("Server running at http://localhost:3000/");
+app.listen(3000, ()=>{
+  console.log("Server running at http://localhost:3000/");
+});
+
