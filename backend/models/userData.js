@@ -52,6 +52,7 @@ const user_data_schema = new mongoose.Schema(
     },
   },
   {
+    timestamps: true,
     versionKey: false,
   }
 );
