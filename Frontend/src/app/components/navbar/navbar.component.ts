@@ -2,6 +2,8 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Router } from '@angular/router';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { UpdateProfileComponent } from '../dialogs/update-profile/update-profile.component';
 
 @Component({
     selector: 'app-navbar',
@@ -15,7 +17,7 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
 
-    constructor(location: Location, private element: ElementRef, private router: Router) {
+    constructor(location: Location,public matDialog: MatDialog, private element: ElementRef, private router: Router) {
         this.location = location;
         this.sidebarVisible = false;
     }
@@ -130,7 +132,11 @@ export class NavbarComponent implements OnInit {
         return 'Dashboard';
     }
     profile_update(){
-        
-        
+        const dialogConfig = new MatDialogConfig();
+        // dialogConfig.disableClose = true;
+        dialogConfig.id = "modal-component";
+        dialogConfig.height = "550px";
+        dialogConfig.width = "600px";
+        const modalDialog = this.matDialog.open(UpdateProfileComponent, dialogConfig);
     }
 }
