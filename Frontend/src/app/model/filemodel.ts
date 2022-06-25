@@ -14,10 +14,17 @@ export class Signup {
      usertype: String;
 }
 
-// export class SavePassword {
-//      email: String;
-//      password: String;
-// }
+export class UpdateProfile {
+     username: String
+     firstname: String;
+     lastname: String;
+     address: String;
+     contact: Number;
+     inputState: String;
+     inputCity: String;
+     inputZip: String;
+     inputCountry: String;
+}
 
 export class Login {
      email: String;

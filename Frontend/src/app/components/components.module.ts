@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatDialogModule } from '@angular/material/dialog';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+
 
 
 import { FooterComponent } from './footer/footer.component';
@@ -13,7 +17,11 @@ import { UpdateProfileComponent } from './dialogs/update-profile/update-profile.
   imports: [
     CommonModule,
     RouterModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
   declarations: [
     FooterComponent,

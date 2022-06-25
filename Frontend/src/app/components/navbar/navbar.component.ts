@@ -135,8 +135,17 @@ export class NavbarComponent implements OnInit {
         const dialogConfig = new MatDialogConfig();
         // dialogConfig.disableClose = true;
         dialogConfig.id = "modal-component";
-        dialogConfig.height = "550px";
+        dialogConfig.height = "530px";
         dialogConfig.width = "600px";
         const modalDialog = this.matDialog.open(UpdateProfileComponent, dialogConfig);
+        modalDialog.afterClosed().subscribe(result => {
+            if(result==false){
+                console.log(`Dialog result is false`)
+            }
+            else{
+                console.log(`Dialog result: ${result}`);
+                // call API to update user data
+            }
+          });
     }
 }
