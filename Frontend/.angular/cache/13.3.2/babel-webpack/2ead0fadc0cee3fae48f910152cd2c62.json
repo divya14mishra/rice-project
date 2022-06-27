@@ -1,0 +1,1 @@
+{"ast":null,"code":"export function showNotification(message, num) {\n  const type = ['', 'info', 'success', 'warning', 'danger'];\n  $.notify({\n    icon: \"pe-7s-gift\",\n    message: message\n  }, {\n    type: type[num],\n    timer: 1000,\n    placement: {\n      from: 'bottom',\n      align: 'right'\n    }\n  });\n}","map":null,"metadata":{},"sourceType":"module"}

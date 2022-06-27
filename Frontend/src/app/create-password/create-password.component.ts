@@ -2,6 +2,7 @@ import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlluserService } from './../services/alluser.service';
+import { showNotification } from '../commonFunctions'
 
 
 declare var $: any;
@@ -25,7 +26,7 @@ export class CreatePasswordComponent implements OnInit {
     console.log(email, pass1, pass2)
     if (pass1 != pass2){
       console.log("password not matched")
-      this.showNotification('Password do not matched', 4)
+      showNotification('Password do not match!', 4)
     }
     else{
       var save_pass_data = {
@@ -36,34 +37,20 @@ export class CreatePasswordComponent implements OnInit {
     }
   }
   
-  showNotification(message:String, num:number ){
-    const type = ['','info','success','warning','danger'];
-    $.notify({
-        icon: "pe-7s-gift",
-        message: message
-    },{
-        type: type[num],
-        timer: 1000,
-        placement: {
-            from: 'bottom',
-            align: 'right'
-        }
-    });
-  }
-
   saveUserPass(data) {
     this.alluserService.savePassword(data).subscribe((data: any[]) => {
       this.password_data = data;
-      console.log('--saveUserPass call-->>>>', this.password_data)
+      console.log('--saveUserPass call-->>>>', this.password_data.status)
       if (this.password_data.status == '1') {
+        localStorage.setItem("auth", "true");
         this.router.navigate(['home']);
       }
       else if (this.password_data.status == '2') {
-        this.showNotification(this.password_data.msg, 4)
+       showNotification(this.password_data.msg, 4)
         return
       }
       else {
-        this.showNotification(this.password_data.msg, 4)
+        showNotification(this.password_data.msg, 4)
       }
       return;
     });

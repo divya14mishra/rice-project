@@ -44,6 +44,7 @@ export class UpdateProfileComponent implements OnInit {
   cancel_update() {
     this.dialogRef.close(false);
   }
+  
   showNotification(message: String, num: number) {
     const type = ['', 'info', 'success', 'warning', 'danger'];
     $.notify({

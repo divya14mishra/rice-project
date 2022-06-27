@@ -1,0 +1,10 @@
+.container-fluid{
+    background-color: #f44336;
+}
+.navbar-wrapper{
+    font-weight: 400;
+    color: white;
+}
+#navbarDropdownMenuLink{
+    color: white;
+}

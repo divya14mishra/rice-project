@@ -4,8 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlluserService } from './../services/alluser.service';
+import { showNotification } from '../commonFunctions'
 import * as internal from 'stream';
-declare var $: any;
 
 @Component({
   selector: 'app-signup',
@@ -39,16 +39,17 @@ export class SignupComponent implements OnInit {
 
     for (let val in data) {
       if (data[val] == '') {
-        this.showNotification('All fields are required!', 4)
+        showNotification('All fields are required!', 4)
         return
       }
     }
+
     var phoneno = /^\d{10}$/;
     if (data.contact.match(phoneno)) {
       this.saveUsersData(data);
     }
     else {
-      this.showNotification('Contact is not correct!', 4)
+      showNotification('Contact is not correct!', 4)
       return
     }
   }
@@ -58,32 +59,17 @@ export class SignupComponent implements OnInit {
       this.signup_data = data;
       console.log('--signup call-->>>>', this.signup_data.status, this.signup_data.msgType)
       if (this.signup_data.status == '1') {
-        this.showNotification('Profile Created', 2)
+        showNotification('Profile Created', 2)
         this.router.navigate(['createPassword']);
       }
       else if (this.signup_data.status == '2') {
-        this.showNotification(this.signup_data.msg, 4)
+        showNotification(this.signup_data.msg, 4)
         return
       }
       else {
-        this.showNotification(this.signup_data.msg, 4)
+        showNotification(this.signup_data.msg, 4)
       }
       return;
-    });
-  }
-
-  showNotification(message: String, num: number) {
-    const type = ['', 'info', 'success', 'warning', 'danger'];
-    $.notify({
-      icon: "pe-7s-gift",
-      message: message
-    }, {
-      type: type[num],
-      timer: 1000,
-      placement: {
-        from: 'bottom',
-        align: 'right'
-      }
     });
   }
 

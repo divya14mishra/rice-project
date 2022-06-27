@@ -22,6 +22,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmdialogComponent } from './components/dialogs/confirmdialog/confirmdialog.component';
 import { FiledetaildialogComponent } from './components/dialogs/filedetaildialog/filedetaildialog.component';
 import { CreatePasswordComponent } from './create-password/create-password.component';
+import { NgChartsModule} from 'ng2-charts';
+import { Chart } from 'chart.js';
+
+
+
 
 @NgModule({
   declarations: [
@@ -49,7 +54,9 @@ import { CreatePasswordComponent } from './create-password/create-password.compo
     ComponentsModule,
     FormsModule,
     MatSelectModule,
-    ReactiveFormsModule      
+    ReactiveFormsModule,
+    NgChartsModule,
+    Chart  
   ],
   providers: [],
   bootstrap: [AppComponent]
