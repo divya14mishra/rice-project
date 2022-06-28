@@ -34,4 +34,11 @@ export class SidebarComponent implements OnInit {
      this.menuItems= this.menuItems.filter(item=>item.path!='user-management');
     }
   }
+  isMobileMenu() {
+    return false;
+      // if ($(window).width() > 991) {
+      //     return false;
+      // }
+      // return true;
+  };
 }

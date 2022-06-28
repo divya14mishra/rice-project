@@ -13,7 +13,6 @@ export class Signup {
      inputCountry: String;
      usertype: String;
 }
-
 export class UpdateProfile {
      username: String
      firstname: String;
@@ -25,7 +24,6 @@ export class UpdateProfile {
      inputZip: String;
      inputCountry: String;
 }
-
 export class Login {
      email: String;
      userPassword: String;

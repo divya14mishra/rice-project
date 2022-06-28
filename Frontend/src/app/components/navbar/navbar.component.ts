@@ -147,5 +147,6 @@ export class NavbarComponent implements OnInit {
                 // call API to update user data
             }
           });
+        
     }
 }

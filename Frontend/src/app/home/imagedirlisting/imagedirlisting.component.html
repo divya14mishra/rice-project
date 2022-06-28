@@ -34,26 +34,26 @@
                   <th>Preview</th>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let item of fileList; let index = index">
+                  <tr  *ngFor="let item of fileList; let index = index;">
                     <td>
                       <a
                         class="clickable"
                         [routerLink]=""
                         (click)="showFileDetail(index)"
-                        >{{ item.fileName }}</a
+                        >{{item.fileName}}</a
                       >
                     </td>
-                    <td>{{ item.status }}</td>
-                    <td>{{ item.diceOutput }}</td>
+                    <td>{{item.status}}</td>
+                    <td>{{item.diceOutput}}</td>
                     <td>
                       <a
-                        [ngClass]="{ clickable: !isAlreadyAnalyzed(index) }"
+                        [ngClass]="{'clickable':!isAlreadyAnalyzed(index)}"
                         [routerLink]=""
                         (click)="sendToAnalytics(index)"
-                        >{{ getActionLabel(index) }}</a
+                        >{{getActionLabel(index)}}</a
                       >
                     </td>
-                    <td>{{ item.share }}</td>
+                    <td>{{item.share}}</td>
                     <td>
                       <a
                         class="clickable"
@@ -71,11 +71,12 @@
       </div>
     </div>
   </div>
-  <div
-    class="example-button-container md-fab-bottom-right"
-    *ngIf="this.recommendationAvailable"
-  >
-    <button mat-fab color="warn" (click)="showRecommendation()">
+  <div class="example-button-container md-fab-bottom-right" *ngIf="this.recommendationAvailable">
+    <button
+      mat-fab
+      color="warn"
+      (click)="showRecommendation()"
+    >
       <mat-icon>forum</mat-icon>
     </button>
   </div>

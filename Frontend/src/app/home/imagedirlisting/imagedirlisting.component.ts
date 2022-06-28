@@ -7,7 +7,7 @@ import { FiledetaildialogComponent } from 'src/app/components/dialogs/filedetail
 import { FileService } from 'src/app/services/fileservice.service';
 import { FileDTO, RecommendationDTO } from 'src/app/model/filemodel';
 
-declare var $: any;
+declare var $:any;
 
 @Component({
   selector: 'app-imagedirlisting',
@@ -29,7 +29,8 @@ export class ImagedirlistingComponent implements OnInit {
   fileList: FileDTO[]
   recommendationList: RecommendationDTO[]
 
-  isDialogShowing = false;
+  isDialogShowing=false;
+
 
   constructor(imageService: ImageService, fileService: FileService, public dialog: MatDialog) {
     this.imageService = imageService;
@@ -43,23 +44,29 @@ export class ImagedirlistingComponent implements OnInit {
 
     this.fileService.getFiles().then(filData => {
       this.fileList = filData
-      if (this.fileList.length > 0) {
-        let hasAnalayzedValue = false;
-        this.fileList.forEach((item) => {
-          if (item.status.toLowerCase() === 'analyzed') {
-            hasAnalayzedValue = true;
-          }
+      if(this.fileList.length>0)
+      {
+        let hasAnalayzedValue=false;
+        this.fileList.forEach((item)=>{
+          if(item.status.toLowerCase()==='analyzed')
+            {
+                hasAnalayzedValue=true;
+            }
         });
-        console.log("Has analyzed: " + hasAnalayzedValue);
-        if (hasAnalayzedValue && !this.isDialogShowing)
+        console.log("Has analyzed: "+hasAnalayzedValue);
+        if(hasAnalayzedValue&&!this.isDialogShowing)
           this.getRecommendation("0");
       }
     });
+
+
   }
 
   isAlreadyAnalyzed(index): boolean {
     return this.fileList[index].status.toLowerCase() === 'analyzed';
   }
+
+
 
   getActionLabel(index) {
     if (!this.isAlreadyAnalyzed(index)) {
@@ -78,6 +85,7 @@ export class ImagedirlistingComponent implements OnInit {
     const dialogRef = this.dialog.open(FiledetaildialogComponent, {
       minWidth: "400px",
       data: this.fileList[index].fileDetail
+
     }
     );
   }
@@ -111,12 +119,14 @@ export class ImagedirlistingComponent implements OnInit {
       }
     });
 
+
     dialogRef.afterClosed().subscribe(dialogResult => {
+
       if (dialogResult) {
         this.fileService.performAnalytics(this.fileList[index].fileId).then(
           result => {
             if (result) {
-              this.showNotification("File is queued for processing.")
+                this.showNotification("File is queued for processing.")
               // setTimeout(() => {
               //   this.fileService.getRecommendation().then(recommendationList => {
               //     this.recommendationList = recommendationList
@@ -146,7 +156,7 @@ export class ImagedirlistingComponent implements OnInit {
 
   getRecommendation(index) {
     this.fileService.getRecommendation().then(recommendationList => {
-
+     
       setTimeout(() => {
         this.recommendationList = recommendationList
         this.recommendationAvailable = true;
@@ -171,7 +181,7 @@ export class ImagedirlistingComponent implements OnInit {
   }
 
   showRecommendation(index) {
-    this.isDialogShowing = true;
+    this.isDialogShowing=true;
     const dialogRef = this.dialog.open(RecommendationdialogComponent, {
       maxWidth: "600px",
       data: this.recommendationList
@@ -181,30 +191,30 @@ export class ImagedirlistingComponent implements OnInit {
     dialogRef.afterClosed().subscribe(dialogResult => {
 
       if (dialogResult) {
-        this.isDialogShowing = false
+        this.isDialogShowing=false
         this.recommendationAvailable = false;
 
       }
       else
-        this.isDialogShowing = false;
+        this.isDialogShowing=false;
 
     });
   }
 
-  showNotification(message: String) {
-    const type = ['', 'info', 'success', 'warning', 'danger'];
-
+  showNotification(message:String){
+    const type = ['','info','success','warning','danger'];
+  
     var color = Math.floor((Math.random() * 4) + 1);
     $.notify({
-      icon: "pe-7s-gift",
-      message: message
-    }, {
-      type: type[4],
-      timer: 1000,
-      placement: {
-        from: 'bottom',
-        align: 'right'
-      }
+        icon: "pe-7s-gift",
+        message: message
+    },{
+        type: type[4],
+        timer: 1000,
+        placement: {
+            from: 'bottom',
+            align: 'right'
+        }
     });
   }
 
