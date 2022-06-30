@@ -15,7 +15,6 @@ import * as internal from 'stream';
 export class SignupComponent implements OnInit {
   usertype = 'user'
   signup_data: any;
-  resp: any;
 
   constructor(private alluserService: AlluserService, public router: Router) { }
   ngOnInit(): void {
