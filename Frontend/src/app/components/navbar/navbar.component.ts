@@ -4,6 +4,7 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { UpdateProfileComponent } from '../dialogs/update-profile/update-profile.component';
+import { ConfirmdialogComponent } from '../dialogs/confirmdialog/confirmdialog.component';
 
 @Component({
     selector: 'app-navbar',
@@ -148,5 +149,30 @@ export class NavbarComponent implements OnInit {
             }
           });
         
+    }
+    admin_request(){
+        console.log(`Request for Admin---------`)
+        const dialogRef = this.matDialog.open(ConfirmdialogComponent, {
+            maxWidth: "400px",
+            data: {
+              title: "Are you sure?",
+              message:
+                "You are about to send the request to admin, to get admin's access."
+            },
+          });
+      
+          dialogRef.afterClosed().subscribe((dialogResult) => {
+            if (dialogResult) {
+                console.log(`dialogResult--------`, dialogResult)
+            //   this.fileService
+            //     .performAnalytics(this.fileList[index].fileId)
+            //     .then((result) => {
+            //       if (result) {
+            //         this.showNotification("File is queued for processing.");
+            //       } else {
+            //       }
+            //     });
+            }
+          });
     }
 }

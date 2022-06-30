@@ -32,7 +32,7 @@ export class ImagedirlistingComponent implements OnInit {
   fileList: FileDTO[];
   recommendationList: RecommendationDTO[];
   isDialogShowing = false;
-
+  metadata : any;
   constructor(
     imageService: ImageService,
     fileService: FileService,
@@ -43,6 +43,16 @@ export class ImagedirlistingComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.metadata = {
+      filename: "abc.png",
+      sampleOrganism : 'Mitochrondria',
+      resolution : '1040 X 1040',
+      samplingTime : '1800 ms',
+      imageVolume : 30,
+      precision : 'N/A',
+      diceSore : 0.53,
+      shareStatus: 'everyone'
+    }
     this.imageService.getImages().then((data) => {
       this.htmlString = data;
     });

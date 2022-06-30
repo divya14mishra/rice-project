@@ -1,0 +1,10 @@
+.mat-button{
+    background-color: #f44336;
+    color: white;
+}
+
+mat-card img{
+width: 100%;
+height: 15vw;
+object-fit: cover;
+}

@@ -1,13 +1,13 @@
-<div>
+<!-- <div>
   <div class="main-content">
     <div class="container-fluid">
-      <!-- <app-imageviewer
+      <app-imageviewer
         [imageURL]="imageURLOrBuffer"
         [open]="viewerOpen"
         (close)="viewerOpen = false"
-        (sendForAnalytics)="sendCurrentImageForAnalytics()" -->
-      <!-- ></app-imageviewer> -->
-      <!-- <div class="row">
+        (sendForAnalytics)="sendCurrentImageForAnalytics()"
+      ></app-imageviewer>
+      <div class="row">
         <div cols="4" rowHeight="1:1">
           <li *ngFor="let html of htmlString">
             <button mat-raised-button (click)="getImage($event)">
@@ -15,7 +15,7 @@
             </button>
           </li>
         </div>
-      </div> -->
+      </div>
       <div class="row">
         <div class="col-lg-10 col-md-12">
           <div class="card">
@@ -79,5 +79,105 @@
     >
       <mat-icon>forum</mat-icon>
     </button>
+  </div>
+</div> -->
+
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+        <mat-card class="example-card">
+          <mat-card-content>
+
+            <p>Filename: {{metadata.filename}}</p>
+
+            <p>SampleOrganism: {{metadata.sampleOrganism}}</p>
+
+            <p>Sampling Time: {{metadata.samplingTime}}</p>
+
+            <p>Resolution: {{metadata.resolution}}</p>
+
+            <p> No of images in voulme: {{metadata.imageVolume}}</p>
+
+            <p>Precision: {{metadata.precision}}</p>
+
+            <p>Dice Score: {{metadata.diceSore}}</p>
+
+            <p>Share Staus: {{metadata.shareStatus}}</p>
+
+          </mat-card-content>
+          <mat-card-actions id="action_btn">
+            <button mat-button id="filebtn">Send Analysis</button>
+            <button mat-button id="filebtn">SHARE</button>
+          </mat-card-actions>
+          <mat-card-actions id="action_btn">
+            <button mat-button id="filebtn">Visualise</button>
+            <button mat-button id="filebtn">Delete</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="col-md-4">
+        <mat-card class="example-card">
+          <mat-card-content>
+
+            <p>Filename: {{metadata.filename}}</p>
+
+            <p>SampleOrganism: {{metadata.sampleOrganism}}</p>
+
+            <p>Sampling Time: {{metadata.samplingTime}}</p>
+
+            <p>Resolution: {{metadata.resolution}}</p>
+
+            <p> No of images in voulme: {{metadata.imageVolume}}</p>
+
+            <p>Precision: {{metadata.precision}}</p>
+
+            <p>Dice Score: {{metadata.diceSore}}</p>
+
+            <p>Share Staus: {{metadata.shareStatus}}</p>
+
+          </mat-card-content>
+          <mat-card-actions id="action_btn">
+            <button mat-button id="filebtn">Send Analysis</button>
+            <button mat-button id="filebtn">SHARE</button>
+          </mat-card-actions>
+          <mat-card-actions id="action_btn">
+            <button mat-button id="filebtn">Visualise</button>
+            <button mat-button id="filebtn">Delete</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="col-md-4">
+        <mat-card class="example-card">
+          <mat-card-content>
+
+            <p>Filename: {{metadata.filename}}</p>
+
+            <p>SampleOrganism: {{metadata.sampleOrganism}}</p>
+
+            <p>Sampling Time: {{metadata.samplingTime}}</p>
+
+            <p>Resolution: {{metadata.resolution}}</p>
+
+            <p> No of images in voulme: {{metadata.imageVolume}}</p>
+
+            <p>Precision: {{metadata.precision}}</p>
+
+            <p>Dice Score: {{metadata.diceSore}}</p>
+
+            <p>Share Staus: {{metadata.shareStatus}}</p>
+
+          </mat-card-content>
+          <mat-card-actions id="action_btn">
+            <button mat-button id="filebtn">Send Analysis</button>
+            <button mat-button id="filebtn">SHARE</button>
+          </mat-card-actions>
+          <mat-card-actions id="action_btn">
+            <button mat-button id="filebtn">Visualise</button>
+            <button mat-button id="filebtn">Delete</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
   </div>
 </div>

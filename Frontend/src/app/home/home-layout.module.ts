@@ -11,6 +11,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from "@angular/material/card";
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule} from '@angular/common/http';
@@ -36,7 +37,8 @@ import { UserDataComponent } from './user-data/user-data.component';
     MatTooltipModule,
     HttpClientModule,
     MatGridListModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule
   ],
   declarations: [
     DashboardComponent,
