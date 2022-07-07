@@ -1,3 +1,5 @@
 /Frontend/node_modules/
 /Frontend/.angular/
 /backend/node_modules/
+/Frontend/dist/
+/Frontend/e2e/
