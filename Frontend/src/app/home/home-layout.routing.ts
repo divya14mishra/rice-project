@@ -13,7 +13,6 @@ export const HomeLayoutRoutes: Routes = [
 
     { path: '', redirectTo: 'experiments' },
     { path: 'dashboard', component: DashboardComponent },
-    // { path: 'user-profile', component: UserprofileComponent },
     { path: 'experiments', component: ImagedirlistingComponent },
     { path: 'user-data', component : UserDataComponent},
     { path: 'ssh-key', component : SshKeyComponent},

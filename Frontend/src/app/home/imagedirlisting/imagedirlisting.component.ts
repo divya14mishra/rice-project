@@ -10,7 +10,7 @@ import { RecommendationdialogComponent } from "../../components/dialogs/recommen
 import { FiledetaildialogComponent } from "src/app/components/dialogs/filedetaildialog/filedetaildialog.component";
 import { FileService } from "src/app/services/fileservice.service";
 import { FileDTO, RecommendationDTO } from "src/app/model/filemodel";
-
+import { showNotification } from '../../commonFunctions'
 declare var $: any;
 
 @Component({
@@ -43,7 +43,8 @@ export class ImagedirlistingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.metadata = {
+    this.metadata = [{
+      id : '236',
       filename: "abc.png",
       sampleOrganism : 'Mitochrondria',
       resolution : '1040 X 1040',
@@ -52,7 +53,37 @@ export class ImagedirlistingComponent implements OnInit {
       precision : 'N/A',
       diceSore : 0.53,
       shareStatus: 'everyone'
-    }
+    },{
+      id : '236',
+      filename: "abc1.png",
+      sampleOrganism : 'Mitochrondria',
+      resolution : '1040 X 1040',
+      samplingTime : '1800 ms',
+      imageVolume : 30,
+      precision : 'N/A',
+      diceSore : 0.53,
+      shareStatus: 'everyone'
+    },{
+      id : '236',
+      filename: "abc2.png",
+      sampleOrganism : 'Mitochrondria',
+      resolution : '1040 X 1040',
+      samplingTime : '1800 ms',
+      imageVolume : 30,
+      precision : 'N/A',
+      diceSore : 0.53,
+      shareStatus: 'everyone'
+    },{
+      id : '236',
+      filename: "abc3.png",
+      sampleOrganism : 'Mitochrondria',
+      resolution : '1040 X 1040',
+      samplingTime : '1800 ms',
+      imageVolume : 30,
+      precision : 'N/A',
+      diceSore : 0.53,
+      shareStatus: 'everyone'
+    }]
     this.imageService.getImages().then((data) => {
       this.htmlString = data;
     });
@@ -124,7 +155,7 @@ export class ImagedirlistingComponent implements OnInit {
           .performAnalytics(this.fileList[index].fileId)
           .then((result) => {
             if (result) {
-              this.showNotification("File is queued for processing.");
+              showNotification("File is queued for processing.", 2);
             } else {
             }
           });
@@ -155,25 +186,5 @@ export class ImagedirlistingComponent implements OnInit {
         this.recommendationAvailable = false;
       } else this.isDialogShowing = false;
     });
-  }
-
-  showNotification(message: String) {
-    const type = ["", "info", "success", "warning", "danger"];
-
-    var color = Math.floor(Math.random() * 4 + 1);
-    $.notify(
-      {
-        icon: "pe-7s-gift",
-        message: message,
-      },
-      {
-        type: type[4],
-        timer: 1000,
-        placement: {
-          from: "bottom",
-          align: "right",
-        },
-      }
-    );
   }
 }

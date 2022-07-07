@@ -11,9 +11,9 @@ export const ROUTES: RouteInfo[] = [
     { path: 'dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
     { path: 'experiments', title: 'Experiments',  icon:'collections', class: '' },
     // { path: 'user-profile', title: 'Profile',  icon:'person', class: '' },  
-    { path: 'user-management', title: 'User Management',  icon:'group', class: '' },
     { path: 'ssh-key', title: 'SSH-key',  icon:'key', class: '' },
     { path: 'user-data', title: 'Data',  icon:'dataset', class: '' },
+    { path: 'user-management', title: 'User Management',  icon:'group', class: '' },
 ];
 
 @Component({
@@ -27,7 +27,7 @@ export class SidebarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    var isAdmin=localStorage.getItem('userType');
+    var isAdmin=localStorage.getItem('usertype');
     this.menuItems = ROUTES.filter(menuItem => menuItem);
     if(isAdmin!='admin')
     {
@@ -36,9 +36,5 @@ export class SidebarComponent implements OnInit {
   }
   isMobileMenu() {
     return false;
-      // if ($(window).width() > 991) {
-      //     return false;
-      // }
-      // return true;
   };
 }

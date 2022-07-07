@@ -11,89 +11,58 @@
             <table class="table table-hover">
               <thead class="text">
                 <th>ID</th>
-                <th>Name</th>
-                <th>Create</th>
-                <th>Modify</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Admin Access</th>
                 <th>Delete</th>
-                <th>Export</th>
               </thead>
-              <tbody>
+              <tbody> 
                 <tr>
                   <td>1</td>
                   <td>User 1</td>
+                  <td>user@gmail.com</td>
+                  <td>999999999</td>
                   <td>
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          checked
-                        />
-                        <div class="form-check-sign no-top">
-                          <span class="check"></span>
-                        </div>
-                      </label>
-                    </div>
+                    <button type="button" class="btn btn-success">Accept</button>
+
+                    <button type="button" class="btn btn-danger">Deny</button>
+                    
                   </td>
                   <td>
-                    <div class="form-check check-position">
-                      <label class="form-check-label">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          checked
-                        />
-                        <div class="form-check-sign no-top">
-                          <span class="check"></span>
-                        </div>
-                      </label>
-                    </div>
+                    <button type="button" class="btn btn-danger">Danger</button>
                   </td>
-                  <td>
-                    <div class="form-check check-position">
-                      <label class="form-check-label">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          checked
-                        />
-                        <div class="form-check-sign no-top">
-                          <span class="check"></span>
-                        </div>
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="form-check check-position">
-                      <label class="form-check-label">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          checked
-                        />
-                        <div class="form-check-sign no-top">
-                          <span class="check"></span>
-                        </div>
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <button
-                      mat-raised-button
-                      type="button"
-                      matTooltip="Remove User"
-                      [matTooltipPosition]="'above'"
-                      class="btn btn-danger btn-link btn-sm btn-just-icon"
-                    >
+                  <!-- <td>
+                    <button mat-raised-button type="button" matTooltip="Remove User" [matTooltipPosition]="'above'"
+                      class="btn btn-danger btn-link btn-sm btn-just-icon">
                       <i class="material-icons">close</i>
                     </button>
+                  </td> -->
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>User 1</td>
+                  <td>user@gmail.com</td>
+                  <td>999999999</td>
+                  <td>
+                    <button type="button" class="btn btn-success">Give Access</button>                    
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-danger">Danger</button>
                   </td>
                 </tr>
-            
+                <tr>
+                  <td>1</td>
+                  <td>User 1</td>
+                  <td>user@gmail.com</td>
+                  <td>999999999</td>
+                  <td>
+                    <button type="button" class="btn btn-success">Admin</button>                    
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-danger">Danger</button>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>

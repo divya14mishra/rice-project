@@ -111,8 +111,9 @@ export class NavbarComponent implements OnInit {
         }
     };
     onLogoutBtnPressed(): void {
-        localStorage.setItem("auth", "");
-        localStorage.setItem("userType", "");
+        // localStorage.setItem("auth", "");
+        // localStorage.setItem("usertype", "");
+        localStorage.clear();
         this.router.navigate(['login']);
     }
     getTitle() {

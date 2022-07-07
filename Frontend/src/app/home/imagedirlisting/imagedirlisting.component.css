@@ -23,8 +23,15 @@ button {
     padding : 0;
     margin : 0;
   }
+  .custom-btn-group .btn{
+    margin-right: 4px;
+  }
   
-  #filebtn {
+  .custom-btn-group .btn:last-child{
+    margin-right: 0px;
+  }
+
+  /* #filebtn {
     background-color: #f44336;
     color: white;
   }
@@ -38,5 +45,5 @@ button {
   #action_btn {
     margin-left: 36px;
     margin-right: 43px;
-  }
+  } */
   

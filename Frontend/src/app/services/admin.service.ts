@@ -9,7 +9,7 @@ export class AdminService implements CanActivate {
   constructor(public router: Router) { }
 
   canActivate(): boolean {
-    let userType = localStorage.getItem("userType");
+    let userType = localStorage.getItem("usertype");
     if (userType=="admin")
       return true;
     else {
