@@ -43,7 +43,7 @@ export class CreatePasswordComponent implements OnInit {
       console.log('--saveUserPass call-->>>>', this.password_data.status)
       if (this.password_data.status == '1') {
         localStorage.setItem("auth", "true");
-        this.router.navigate(['home']);
+        this.router.navigate(['login']);
       }
       else if (this.password_data.status == '2') {
        showNotification(this.password_data.msg, 4)

@@ -46,9 +46,14 @@ const user_data_schema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    admin_status:{
+      type: Number,
+      default: 0, // 0:user, 1:requested for admin, 2:admin
+      required: true,
+    },
     password: {
       type: String,
-      required: false,
+      required: false
     },
   },
   {

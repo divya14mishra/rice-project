@@ -18,49 +18,23 @@
                 <th>Delete</th>
               </thead>
               <tbody> 
-                <tr>
-                  <td>1</td>
-                  <td>User 1</td>
-                  <td>user@gmail.com</td>
-                  <td>999999999</td>
-                  <td>
-                    <button type="button" class="btn btn-success">Accept</button>
-
-                    <button type="button" class="btn btn-danger">Deny</button>
-                    
+                <tr *ngFor="let user of all_user_data.data">
+                  <td>{{user._id}}</td>
+                  <td>{{user.username}}</td>
+                  <td>{{user.email}}</td>
+                  <td>{{user.contact}}</td>
+                  <td *ngIf="user.admin_status==2">
+                    <i class="material-icons text-success" (click)="accept_request()">checkmark</i>
+                    <i class="material-icons text-danger" (click)="reject_request()">close</i>
                   </td>
-                  <td>
-                    <button type="button" class="btn btn-danger">Danger</button>
+                  <td *ngIf="user.admin_status==0">
+                    <i class="material-icons text-success" (click)="accept_request()">key</i>                  
                   </td>
-                  <!-- <td>
-                    <button mat-raised-button type="button" matTooltip="Remove User" [matTooltipPosition]="'above'"
-                      class="btn btn-danger btn-link btn-sm btn-just-icon">
-                      <i class="material-icons">close</i>
-                    </button>
-                  </td> -->
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>User 1</td>
-                  <td>user@gmail.com</td>
-                  <td>999999999</td>
-                  <td>
-                    <button type="button" class="btn btn-success">Give Access</button>                    
+                  <td *ngIf="user.admin_status==1">
+                    <i class="material-icons text-success" (click)="make_user()">person</i>                   
                   </td>
-                  <td>
-                    <button type="button" class="btn btn-danger">Danger</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>User 1</td>
-                  <td>user@gmail.com</td>
-                  <td>999999999</td>
-                  <td>
-                    <button type="button" class="btn btn-success">Admin</button>                    
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-danger">Danger</button>
+                  <td>  
+                    <i class="material-icons text-danger" (click)="delete_user()">delete</i>
                   </td>
                 </tr>
               </tbody>

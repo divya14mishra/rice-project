@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, NgForm } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { showNotification } from '../../../commonFunctions'
 declare var $: any;
 
 
@@ -11,7 +12,7 @@ declare var $: any;
 })
 export class UpdateProfileComponent implements OnInit {
   form: FormGroup;
-
+  user_d = JSON.parse(localStorage.getItem('user_info'));
   constructor(
     public dialogRef: MatDialogRef<UpdateProfileComponent>) { }
 
@@ -19,9 +20,9 @@ export class UpdateProfileComponent implements OnInit {
   }
 
   update_data(form: NgForm) {
-    console.log('------->>', form.value)
     let data =
     {
+      id: this.user_d._id,
       username: form.value.username,
       firstname: form.value.fistname,
       lastname: form.value.lastname,
@@ -34,29 +35,14 @@ export class UpdateProfileComponent implements OnInit {
     }
     var phoneno = /^\d{10}$/;
     if (!data.contact.match(phoneno)) {
-      this.showNotification('Contact is not correct! Profile not update', 4)
+      showNotification('Contact is not correct! Profile not update', 4)
     }
     else {
-      this.showNotification('Profile Update!', 2)
+      // showNotification('Profile Update!', 2)
       this.dialogRef.close(data);
     }
   }
   cancel_update() {
     this.dialogRef.close(false);
-  }
-  
-  showNotification(message: String, num: number) {
-    const type = ['', 'info', 'success', 'warning', 'danger'];
-    $.notify({
-      icon: "pe-7s-gift",
-      message: message
-    }, {
-      type: type[num],
-      timer: 1000,
-      placement: {
-        from: 'bottom',
-        align: 'right'
-      }
-    });
   }
 }

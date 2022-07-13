@@ -13,7 +13,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 mongoose.connect(
-  process.env.DB_CONNECT,
+  process.env.DB_CONNECT_SERVER,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -29,8 +29,7 @@ app.get("/", async (req, res) => {
 });
 
 app.use("/", require("./routes/user_all_data"));
-app.use("/", require("./routes/user_pass"));
-app.use("/", require("./routes/user_auth"));
+
 
 
 // app.get('/retrieve_files', (req, res) => {

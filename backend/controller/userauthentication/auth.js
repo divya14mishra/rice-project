@@ -31,7 +31,7 @@ const authenticateUserPassword = async (req, res) => {
     return res.json({
       status: 1,
       msgType: "success",
-      data: check_user.usertype,
+      data: check_user,
     });
   } catch (error) {
     console.log(error);

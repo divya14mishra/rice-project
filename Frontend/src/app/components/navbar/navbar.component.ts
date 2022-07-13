@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { UpdateProfileComponent } from '../dialogs/update-profile/update-profile.component';
 import { ConfirmdialogComponent } from '../dialogs/confirmdialog/confirmdialog.component';
+import { AlluserService } from '../../services/alluser.service';
+import { showNotification } from '../../commonFunctions'
 
 @Component({
     selector: 'app-navbar',
@@ -17,8 +19,11 @@ export class NavbarComponent implements OnInit {
     mobile_menu_visible: any = 0;
     private toggleButton: any;
     private sidebarVisible: boolean;
+    update_data: any;
+    user_d = JSON.parse(localStorage.getItem('user_info'));
 
-    constructor(location: Location,public matDialog: MatDialog, private element: ElementRef, private router: Router) {
+
+    constructor(private alluserService: AlluserService, location: Location,public matDialog: MatDialog, private element: ElementRef, private router: Router) {
         this.location = location;
         this.sidebarVisible = false;
     }
@@ -135,20 +140,29 @@ export class NavbarComponent implements OnInit {
     }
     profile_update(){
         const dialogConfig = new MatDialogConfig();
-        // dialogConfig.disableClose = true;
         dialogConfig.id = "modal-component";
         dialogConfig.height = "530px";
         dialogConfig.width = "600px";
         const modalDialog = this.matDialog.open(UpdateProfileComponent, dialogConfig);
         modalDialog.afterClosed().subscribe(result => {
-            if(result==false){
-                console.log(`Dialog result is false`)
-            }
-            else{
-                console.log(`Dialog result: ${result}`);
-                // call API to update user data
-            }
-          });
+            // if(result==false){
+            //     console.log(`Dialog result is false`)
+            // }
+            if(result){
+                this.alluserService.updateUserProfile(result).subscribe((data: any[]) => {
+                    this.update_data = data;
+                    if(this.update_data.status==1){
+                        showNotification(this.update_data.msg, 2)
+                    }
+                    else if(this.update_data.status==2){
+                        showNotification(this.update_data.msg, 3)
+                    }
+                    else{
+                        showNotification(this.update_data.msg, 3)
+                    }
+                })
+          }
+        });
         
     }
     admin_request(){
@@ -165,6 +179,9 @@ export class NavbarComponent implements OnInit {
           dialogRef.afterClosed().subscribe((dialogResult) => {
             if (dialogResult) {
                 console.log(`dialogResult--------`, dialogResult)
+                document.getElementById("admin_request").innerHTML = "Request sent";
+                $('#admin_request').addClass('disabled');
+
             //   this.fileService
             //     .performAnalytics(this.fileList[index].fileId)
             //     .then((result) => {

@@ -14,6 +14,7 @@ export class Signup {
      usertype: String;
 }
 export class UpdateProfile {
+     id:String;
      username: String
      firstname: String;
      lastname: String;
