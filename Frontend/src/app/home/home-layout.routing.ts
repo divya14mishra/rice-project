@@ -11,7 +11,7 @@ import { UsermanagementComponent } from './usermanagement/usermanagement.compone
 
 export const HomeLayoutRoutes: Routes = [
 
-    { path: '', redirectTo: 'experiments' },
+    { path: '', redirectTo: 'dashboard' },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'experiments', component: ImagedirlistingComponent },
     { path: 'user-data', component : UserDataComponent},

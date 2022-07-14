@@ -23,15 +23,15 @@
                   <td>{{user.username}}</td>
                   <td>{{user.email}}</td>
                   <td>{{user.contact}}</td>
-                  <td *ngIf="user.admin_status==2">
+                  <td *ngIf="user.admin_status==1">
                     <i class="material-icons text-success" (click)="accept_request()">checkmark</i>
                     <i class="material-icons text-danger" (click)="reject_request()">close</i>
                   </td>
                   <td *ngIf="user.admin_status==0">
                     <i class="material-icons text-success" (click)="accept_request()">key</i>                  
                   </td>
-                  <td *ngIf="user.admin_status==1">
-                    <i class="material-icons text-success" (click)="make_user()">person</i>                   
+                  <td *ngIf="user.admin_status==2">
+                    <i class="material-icons text-success" (click)="change_to_user()">person</i>                   
                   </td>
                   <td>  
                     <i class="material-icons text-danger" (click)="delete_user()">delete</i>

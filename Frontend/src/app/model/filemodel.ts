@@ -30,6 +30,16 @@ export class Login {
      userPassword: String;
 }
 
+export class userManagement{
+     id:String;
+     flag:Number;
+}
+
+export class adminRequest{
+     id:String;
+}
+
+
 export class FileDTO {
      public fileId: string;
      public fileName: string;
@@ -39,7 +49,6 @@ export class FileDTO {
      public imageUrl: string;
      public matUrl: string;
      public fileDetail: FileDetail;
-
 }
 
 export class FileDetail {

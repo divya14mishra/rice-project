@@ -4,12 +4,15 @@ require('../models/userData');
 const deleteQuery = async(query_params)=>{
     const { modelName, condition, query_type = "default"} = query_params;
     const groupModel = mongoose.model(modelName);
+    console.log("deleteQuery ", query_params);
     let delete_data = '';
     switch (query_type) {
         case "deleteOne":
+            console.log("deleteOne--");
             delete_data = await groupModel.deleteOne(condition);
             break;
         default:
+            console.log("default--");
             delete_data = await groupModel.deleteMany(condition);
             break;
     }

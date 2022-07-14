@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Signup,Login,UpdateProfile} from '../model/filemodel'
+import { Signup, Login, UpdateProfile, userManagement, adminRequest} from '../model/filemodel'
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +31,15 @@ export class AlluserService {
   updateUserProfile(updateProfile: UpdateProfile){
     // console.log('updateProfile ' + JSON.stringify(updateProfile));
     return this.httpClient.post('http://localhost:3000/updateProfile', updateProfile)
+  }
+  
+  userManagement(userManagement: userManagement){
+    // console.log('userManagement ' + JSON.stringify(userManagement));
+    return this.httpClient.post('http://localhost:3000/usermanagement', userManagement)
+  }
+
+  adminRequest(adminRequest: adminRequest){
+    // console.log('adminRequest ' + JSON.stringify(adminRequest));
+    return this.httpClient.post('http://localhost:3000/adminrequest', adminRequest)
   }
 }

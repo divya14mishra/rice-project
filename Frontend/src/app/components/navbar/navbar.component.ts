@@ -20,10 +20,11 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
     update_data: any;
+    request_data :any;
     user_d = JSON.parse(localStorage.getItem('user_info'));
 
 
-    constructor(private alluserService: AlluserService, location: Location,public matDialog: MatDialog, private element: ElementRef, private router: Router) {
+    constructor(private alluserService: AlluserService, location: Location, public matDialog: MatDialog, private element: ElementRef, private router: Router) {
         this.location = location;
         this.sidebarVisible = false;
     }
@@ -138,59 +139,57 @@ export class NavbarComponent implements OnInit {
         }
         return 'Dashboard';
     }
-    profile_update(){
+    profile_update() {
         const dialogConfig = new MatDialogConfig();
         dialogConfig.id = "modal-component";
         dialogConfig.height = "530px";
         dialogConfig.width = "600px";
         const modalDialog = this.matDialog.open(UpdateProfileComponent, dialogConfig);
         modalDialog.afterClosed().subscribe(result => {
-            // if(result==false){
-            //     console.log(`Dialog result is false`)
-            // }
-            if(result){
+            if (result) {
                 this.alluserService.updateUserProfile(result).subscribe((data: any[]) => {
                     this.update_data = data;
-                    if(this.update_data.status==1){
+                    if (this.update_data.status == 1) {
                         showNotification(this.update_data.msg, 2)
                     }
-                    else if(this.update_data.status==2){
-                        showNotification(this.update_data.msg, 3)
+                    else if (this.update_data.status == 2) {
+                        showNotification(this.update_data.msg, 4)
                     }
-                    else{
-                        showNotification(this.update_data.msg, 3)
+                    else {
+                        showNotification(this.update_data.msg, 4)
                     }
                 })
-          }
+            }
         });
-        
+
     }
-    admin_request(){
-        console.log(`Request for Admin---------`)
+    admin_request() {
         const dialogRef = this.matDialog.open(ConfirmdialogComponent, {
             maxWidth: "400px",
             data: {
-              title: "Are you sure?",
-              message:
-                "You are about to send the request to admin, to get admin's access."
+                title: "Are you sure?",
+                message:
+                    "You are about to send the request to admin, to get admin's access."
             },
-          });
-      
-          dialogRef.afterClosed().subscribe((dialogResult) => {
+        });
+
+        dialogRef.afterClosed().subscribe((dialogResult) => {
             if (dialogResult) {
-                console.log(`dialogResult--------`, dialogResult)
                 document.getElementById("admin_request").innerHTML = "Request sent";
                 $('#admin_request').addClass('disabled');
-
-            //   this.fileService
-            //     .performAnalytics(this.fileList[index].fileId)
-            //     .then((result) => {
-            //       if (result) {
-            //         this.showNotification("File is queued for processing.");
-            //       } else {
-            //       }
-            //     });
+                this.alluserService.adminRequest(this.user_d._id).subscribe((data: any[]) => {
+                    this.request_data = data;
+                    if (this.update_data.status == 1) {
+                        showNotification(this.update_data.msg, 2)
+                    }
+                    else if (this.update_data.status == 2) {
+                        showNotification(this.update_data.msg, 4)
+                    }
+                    else {
+                        showNotification(this.update_data.msg, 4)
+                    }
+                })
             }
-          });
+        });
     }
 }
