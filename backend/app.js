@@ -4,7 +4,8 @@ var cors = require("cors");
 const crypto = require("crypto");
 const bodyParser = require("body-parser");
 const { spawn } = require("child_process");
-require("dotenv").config();
+// require("dotenv").config();
+require('dotenv').config({ path: './envfile/.env' })
 const fs = require("fs");
 require('../backend/models/userData');
 require('../backend/models/imageMetaData');

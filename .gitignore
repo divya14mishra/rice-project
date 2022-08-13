@@ -3,4 +3,4 @@
 /backend/node_modules/
 /Frontend/dist/
 /Frontend/e2e/
-/backend/.env/
+/backend/envfile/
