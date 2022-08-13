@@ -14,7 +14,6 @@ router.post("/usermanagement", userManagement );
 router.post("/adminrequest", usersAdminRequest );
 
 
-
 router.get("/all_users", async (req, res) => {
     try {
         let query_params = {

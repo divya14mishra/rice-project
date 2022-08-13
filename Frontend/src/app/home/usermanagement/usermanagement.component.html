@@ -24,17 +24,17 @@
                   <td>{{user.email}}</td>
                   <td>{{user.contact}}</td>
                   <td *ngIf="user.admin_status==1">
-                    <i class="material-icons text-success" (click)="accept_request()">checkmark</i>
-                    <i class="material-icons text-danger" (click)="reject_request()">close</i>
+                    <i class="material-icons text-success" (click)="accept_request(user._id)">checkmark</i>
+                    <i class="material-icons text-danger" (click)="reject_request(user._id)">close</i>
                   </td>
                   <td *ngIf="user.admin_status==0">
-                    <i class="material-icons text-success" (click)="accept_request()">key</i>                  
+                    <i class="material-icons text-success" (click)="accept_request(user._id)">key</i>                  
                   </td>
                   <td *ngIf="user.admin_status==2">
-                    <i class="material-icons text-success" (click)="change_to_user()">person</i>                   
+                    <i class="material-icons text-success" (click)="change_to_user(user._id)">person</i>                   
                   </td>
                   <td>  
-                    <i class="material-icons text-danger" (click)="delete_user()">delete</i>
+                    <i class="material-icons text-danger" (click)="delete_user(user._id)">delete</i>
                   </td>
                 </tr>
               </tbody>

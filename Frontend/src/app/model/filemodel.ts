@@ -1,4 +1,7 @@
-import { jsonObject, jsonMember, jsonArrayMember, jsonMapMember, TypedJSON } from 'typedjson';
+
+export class del_img_id{
+     _id:String
+}
 
 export class Signup {
      username: String
@@ -39,6 +42,10 @@ export class adminRequest{
      id:String;
 }
 
+export class image_analysis{
+    filename:String;
+    filepath:String;
+}
 
 export class FileDTO {
      public fileId: string;

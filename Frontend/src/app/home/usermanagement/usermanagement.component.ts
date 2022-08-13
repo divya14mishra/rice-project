@@ -4,10 +4,6 @@ import { ConfirmdialogComponent } from '../../components/dialogs/confirmdialog/c
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { showNotification } from '../../commonFunctions'
 
-
-
-
-
 @Component({
   selector: 'app-usermanagement',
   templateUrl: './usermanagement.component.html',
@@ -29,36 +25,36 @@ export class UsermanagementComponent implements OnInit {
   // 2: change admin back to user
   // 3: delete user or admin
 
-  accept_request() {
+  accept_request(userid) {
     const update_dta = {
-      id: this.user_d._id,
+      id: userid,
       flag: 0
     }
     const msg = "Do you want to give user admin's access?";
     this.commonFunction(update_dta, msg);
   }
 
-  reject_request() {
+  reject_request(userid) {
     const update_dta = {
-      id: this.user_d._id,
+      id: userid,
       flag: 1
     }
     const msg = "You are about to reject user's admin request.";
     this.commonFunction(update_dta, msg);
   }
 
-  delete_user() {
+  delete_user(userid) {
     const update_dta = {
-      id: this.user_d._id,
+      id: userid,
       flag: 3
     }
     const msg = "Do you want to delete user permanently?";
     this.commonFunction(update_dta, msg);
   }
 
-  change_to_user() {
+  change_to_user(userid) {
     const update_dta = {
-      id: this.user_d._id,
+      id: userid,
       flag: 2
     }
     const msg = "Do you want to change this admin to user?";
@@ -84,12 +80,15 @@ export class UsermanagementComponent implements OnInit {
         this.alluserService.userManagement(update_dta).subscribe((data: any[]) => {
           this.all_user_data = data;
           if (this.all_user_data.status == 1) {
+            location.reload()
             return showNotification(this.all_user_data.msg, 2)
           }
           else if (this.all_user_data.status == 2) {
+            location.reload()
             return showNotification(this.all_user_data.msg, 4)
           }
           else {
+            location.reload()
             return showNotification(this.all_user_data.msg, 4)
           }
 

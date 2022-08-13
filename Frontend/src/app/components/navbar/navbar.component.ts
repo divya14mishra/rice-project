@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
     update_data: any;
-    request_data :any;
+    request_data: any;
     user_d = JSON.parse(localStorage.getItem('user_info'));
 
 
@@ -177,16 +177,16 @@ export class NavbarComponent implements OnInit {
             if (dialogResult) {
                 document.getElementById("admin_request").innerHTML = "Request sent";
                 $('#admin_request').addClass('disabled');
-                this.alluserService.adminRequest(this.user_d._id).subscribe((data: any[]) => {
+                this.alluserService.adminRequest({ id: this.user_d._id }).subscribe((data: any[]) => {
                     this.request_data = data;
-                    if (this.update_data.status == 1) {
-                        showNotification(this.update_data.msg, 2)
+                    if (this.request_data.status == 1) {
+                        showNotification(this.request_data.msg, 2)
                     }
-                    else if (this.update_data.status == 2) {
-                        showNotification(this.update_data.msg, 4)
+                    else if (this.request_data.status == 2) {
+                        showNotification(this.request_data.msg, 4)
                     }
                     else {
-                        showNotification(this.update_data.msg, 4)
+                        showNotification(this.request_data.msg, 4)
                     }
                 })
             }

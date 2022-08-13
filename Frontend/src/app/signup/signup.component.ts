@@ -43,12 +43,21 @@ export class SignupComponent implements OnInit {
       }
     }
 
+    var email_regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if(data.email.match(email_regex)){
+      this.saveUsersData(data);
+    }
+    else{
+      showNotification('Email is not valid!', 4)
+      return
+    }
+
     var phoneno = /^\d{10}$/;
     if (data.contact.match(phoneno)) {
       this.saveUsersData(data);
     }
     else {
-      showNotification('Contact is not correct!', 4)
+      showNotification('Contact is not valid!', 4)
       return
     }
   }
@@ -56,7 +65,7 @@ export class SignupComponent implements OnInit {
   saveUsersData(data) {
     this.alluserService.signupData(data).subscribe((data: any[]) => {
       this.signup_data = data;
-      console.log('--signup call-->>>>', this.signup_data.status, this.signup_data.msgType)
+      // console.log('--signup call-->>>>', this.signup_data.status, this.signup_data.msgType)
       if (this.signup_data.status == '1') {
         showNotification('Profile Created', 2)
         this.router.navigate(['createPassword']);

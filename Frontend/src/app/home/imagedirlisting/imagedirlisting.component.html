@@ -85,32 +85,37 @@
 <div class="main-content">
   <div class="container-fluid">
     <div class="row" >
-      <div class="col-md-4" *ngFor="let filedata of metadata">
+      <div class="col-md-4" *ngFor="let filedata of metadata.data">
         <mat-card class="mb-3" >
           <mat-card-content>
 
             <p>Filename: {{filedata.filename}}</p>
+            <!--comes with images, ask microscope people for image data  -->
 
-            <p>SampleOrganism: {{filedata.sampleOrganism}}</p>
+            <p>SampleOrganism: {{filedata.sampleOrganism}}</p> 
+            <!-- CNT: nanotube, Biomedical: human/mouse -->
 
             <p>Sampling Time: {{filedata.samplingTime}}</p>
+            <!--comes with images  -->
 
             <p>Resolution: {{filedata.resolution}}</p>
+            <!--comes with images, ask microscope people for image data  -->
+            
+            <p id="volume"> No of images in voulme: {{filedata.imageVolume}}</p>
+            <!--comes with images, ask microscope people for image data  -->
 
-            <p> No of images in voulme: {{filedata.imageVolume}}</p>
+            <p id="precision"> Precision: {{filedata.precision}}</p>
 
-            <p>Precision: {{filedata.precision}}</p>
-
-            <p>Dice Score: {{filedata.diceSore}}</p>
+            <p id="dicescore"> Dice Score: {{filedata.diceSore}}</p>
 
             <p>Share Staus: {{filedata.shareStatus}}</p>
 
           </mat-card-content>
           <div class="w-100 d-flex custom-btn-group">
-            <button type="button" class="btn btn-sm btn-danger px-2" onclick="sendToAnalytics(filedata.id)">Send Analysis</button>
+            <button type="button" class="btn btn-sm btn-danger px-2" (click)="sendToAnalytics(filedata.filename, filedata.filepath)">Send Analysis</button>
             <button type="button" class="btn btn-sm btn-danger px-2">Share</button>
             <button type="button" class="btn btn-sm btn-danger px-2">Visualise</button>
-            <button type="button" class="btn btn-sm btn-danger px-2">Delete</button>
+            <button type="button" class="btn btn-sm btn-danger px-2" (click)="deleteData(filedata.filename, filedata._id)">Delete</button>
           </div>
         </mat-card>
       </div>

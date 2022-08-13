@@ -9,9 +9,7 @@ const authenticateUserPassword = async (req, res) => {
       where: { email: email },
     };
     check_user = await find_one(query_params);
-    console.log('-->>user-->>',check_user)
     if (check_user == null) {
-      console.log("No user found with this email");
       return res.json({
         status: 2,
         msgType: "success",

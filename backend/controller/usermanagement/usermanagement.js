@@ -43,7 +43,7 @@ const userManagement = async (req, res) => {
           queryType: "updateOne",
         };
       }
-
+      console.log(query_params);  
       let update_result = await update(query_params);
 
       if (update_result.modifiedCount == 0) {
@@ -100,7 +100,6 @@ const usersAdminRequest = async (req, res) => {
       queryType: "updateOne",
     };
     let update_result = await update(query_params);
-
     if (update_result.modifiedCount == 0) {
       return res.json({
         status: 2,

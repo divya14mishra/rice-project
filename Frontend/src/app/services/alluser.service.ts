@@ -42,4 +42,5 @@ export class AlluserService {
     // console.log('adminRequest ' + JSON.stringify(adminRequest));
     return this.httpClient.post('http://localhost:3000/adminrequest', adminRequest)
   }
+
 }

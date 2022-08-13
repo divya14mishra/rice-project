@@ -7,10 +7,19 @@ const { spawn } = require("child_process");
 require("dotenv").config();
 const fs = require("fs");
 require('../backend/models/userData');
+require('../backend/models/imageMetaData');
+
 
 const app = express();
-app.use(cors());
+// app.use(cors());
+const corsOptions ={
+  origin:'*', 
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200,
+}
+app.use(cors(corsOptions))
 app.use(bodyParser.json());
+
 
 mongoose.connect(
   process.env.DB_CONNECT_SERVER,
@@ -24,11 +33,13 @@ mongoose.connect(
   }
 );
 
+
 app.get("/", async (req, res) => {
   return res.json({ status: 1 });
 });
 
 app.use("/", require("./routes/user_all_data"));
+app.use("/", require("./routes/imagedata"));
 
 
 

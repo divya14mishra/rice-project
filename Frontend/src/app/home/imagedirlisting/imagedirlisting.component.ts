@@ -1,11 +1,9 @@
+import { image_analysis } from './../../model/filemodel';
 import { Component, OnInit } from "@angular/core";
 import { ConfirmdialogComponent } from "src/app/components/dialogs/confirmdialog/confirmdialog.component";
 import { ImageService } from "src/app/services/image.service";
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from "@angular/material/dialog";
+import { AlluserService } from '../../services/alluser.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from "@angular/material/dialog";
 import { RecommendationdialogComponent } from "../../components/dialogs/recommendationdialog/recommendationdialog.component";
 import { FiledetaildialogComponent } from "src/app/components/dialogs/filedetaildialog/filedetaildialog.component";
 import { FileService } from "src/app/services/fileservice.service";
@@ -33,57 +31,19 @@ export class ImagedirlistingComponent implements OnInit {
   recommendationList: RecommendationDTO[];
   isDialogShowing = false;
   metadata : any;
-  constructor(
-    imageService: ImageService,
-    fileService: FileService,
-    public dialog: MatDialog
-  ) {
+  anlyzedData: any;
+  deltedData: any;
+
+  constructor(private alluserService: AlluserService,imageService: ImageService, fileService: FileService, public dialog: MatDialog) 
+  {
     this.imageService = imageService;
     this.fileService = fileService;
   }
 
   ngOnInit(): void {
-    this.metadata = [{
-      id : '236',
-      filename: "abc.png",
-      sampleOrganism : 'Mitochrondria',
-      resolution : '1040 X 1040',
-      samplingTime : '1800 ms',
-      imageVolume : 30,
-      precision : 'N/A',
-      diceSore : 0.53,
-      shareStatus: 'everyone'
-    },{
-      id : '236',
-      filename: "abc1.png",
-      sampleOrganism : 'Mitochrondria',
-      resolution : '1040 X 1040',
-      samplingTime : '1800 ms',
-      imageVolume : 30,
-      precision : 'N/A',
-      diceSore : 0.53,
-      shareStatus: 'everyone'
-    },{
-      id : '236',
-      filename: "abc2.png",
-      sampleOrganism : 'Mitochrondria',
-      resolution : '1040 X 1040',
-      samplingTime : '1800 ms',
-      imageVolume : 30,
-      precision : 'N/A',
-      diceSore : 0.53,
-      shareStatus: 'everyone'
-    },{
-      id : '236',
-      filename: "abc3.png",
-      sampleOrganism : 'Mitochrondria',
-      resolution : '1040 X 1040',
-      samplingTime : '1800 ms',
-      imageVolume : 30,
-      precision : 'N/A',
-      diceSore : 0.53,
-      shareStatus: 'everyone'
-    }]
+    this.imageService.getImageData().subscribe((data: any[]) => {
+      this.metadata = data;
+    });
     this.imageService.getImages().then((data) => {
       this.htmlString = data;
     });
@@ -136,33 +96,64 @@ export class ImagedirlistingComponent implements OnInit {
     //
   }
 
-  sendToAnalytics(index) {
-    if (this.isAlreadyAnalyzed(index)) return;
+  sendToAnalytics(filename, filepath) {
     const dialogRef = this.dialog.open(ConfirmdialogComponent, {
-      maxWidth: "400px",
+      maxWidth: "450px",
       data: {
         title: "Are you sure?",
         message:
           "You are about to send the '" +
-          this.fileList[index].fileName +
+          filename +
           "'  for analytics.",
+      },
+    });
+    // console.log(".....>>>>", filename, filepath)
+    dialogRef.afterClosed().subscribe((dialogResult) => {
+      if (dialogResult) {
+        showNotification("Please wait while your image is analyzing...", 2);
+        this.imageService.image_analysis({filename:filename, filepath: filepath}).subscribe((data: any[]) => {
+        this.anlyzedData = data;
+        console.log("---this.anlyzedData--- ", this.anlyzedData);
+        if(this.anlyzedData.status!= 0){
+          var vol = document.getElementById("volume");
+          var prec =  document.getElementById("precision");
+          var dscore =  document.getElementById("dicescore");
+          vol.innerHTML = "No of images in voulme: "+this.anlyzedData.data.imageVolume;
+          prec.innerHTML = "Precision: "+this.anlyzedData.data.precision;
+          dscore.innerHTML = "Dice Score: "+this.anlyzedData.data.diceSore;
+          showNotification(`Data analyzed successfully.`, 2);
+        }
+        else{
+          showNotification(this.anlyzedData.msg, 2);
+        }
+       
+        });
+      }
+    });
+  }
+
+  deleteData(filename, _id){
+    const dialogRef = this.dialog.open(ConfirmdialogComponent, {
+      maxWidth: "450px",
+      data: {
+        title: "Are you sure?",
+        message:
+          "Your file '" +
+          filename +
+          "' will be deleted permanently.",
       },
     });
 
     dialogRef.afterClosed().subscribe((dialogResult) => {
       if (dialogResult) {
-        this.fileService
-          .performAnalytics(this.fileList[index].fileId)
-          .then((result) => {
-            if (result) {
-              showNotification("File is queued for processing.", 2);
-            } else {
-            }
+
+        this.imageService.image_delete({_id}).subscribe((data: any[]) => {
+            console.log("image meta data deleting--> ", data);
+            this.deltedData = data;
           });
       }
     });
   }
-
   getRecommendation(index) {
     this.fileService.getRecommendation().then((recommendationList) => {
       setTimeout(() => {
