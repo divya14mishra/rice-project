@@ -1,7 +1,8 @@
 <div class="main-content">
     <div class="container-fluid">
-      <div class="row">
-  
+      <!-- <p *ngIf="component_val == 0"> welcome here !</p> -->
+      <!-- <p *ngIf="component_val == 1"> hey !</p> -->
+      <div  *ngIf="component_val == 0" class="row">
         <div class="col-md-6">
           <mat-card class="example-card">
             <mat-card-header>
@@ -9,7 +10,7 @@
             </mat-card-header>
             <img mat-card-image class="main-image" src="../../../assets/img/m1.jpg" alt="Photo has error">
             <mat-card-actions>
-              <button mat-button >Click here for data!</button>
+              <button mat-button (click)="comp_state(1)">Click here for data!</button>
             </mat-card-actions>
           </mat-card>
         </div>
@@ -21,7 +22,118 @@
             </mat-card-header>
             <img mat-card-image class="main-image" src="../../../assets/img/m2.jpg" alt="Photo has error">
             <mat-card-actions>
-              <button mat-button>Click here for data!</button>
+              <button mat-button (click)="comp_state(2)">Click here for data!</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+      <!-- #################### for mitochondria ########################### -->
+
+      <div  *ngIf="component_val == 1" class="row">
+        <div class="col-md-6">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>Past Data</mat-card-title>
+            </mat-card-header>
+            <div class="card-body table-responsive">
+              <table class="table table-hover">
+                <tbody>
+                  <tr *ngFor="let ana_d of analyzed_data" >
+                    <td>{{ana_d.filename}}</td>
+                    <td > <i class="material-icons text-primary">visibility</i></td>
+                    <td > <i class="material-icons text-primary">image</i></td>
+                    <td> <i class="material-icons text-danger">delete</i></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </mat-card>
+        </div>
+  
+        <div class="col-md-6">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>Current Data</mat-card-title>
+            </mat-card-header>
+            <div class="card-body table-responsive">
+              <table class="table table-hover">
+                <tbody>
+                  <tr *ngFor="let not_ana_d of not_analyzed_data">
+                  <td>{{not_ana_d.filename}}</td>
+                  <td ><i class="material-icons text-primary">send</i></td>
+                  <td><i class="material-icons text-danger">delete</i></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <mat-card-actions align="end">
+              <form id='form'>
+                <!-- <div class="input-group"> -->
+                  <!-- <label for='files'>Select files</label> -->
+                <input id='files' type="file" name="files" multiple (change)="selectMultipleImage($event)">
+
+                <!-- </div> -->
+                <i class="material-icons text-primary" type='submit' (click)="onMultipleSubmit()">cloud_upload</i>
+              </form>
+              <!-- <i class="material-icons text-primary">cloud_upload</i> -->
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+      <!-- ############################### for CNT ########################### -->
+
+      <div  *ngIf="component_val == 2" class="row">
+        <div class="col-md-6">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>Past Data</mat-card-title>
+            </mat-card-header>
+            <div class="card-body table-responsive">
+              <table class="table table-hover">
+                <tbody>
+                  <tr>
+                    <td>mitoem_r_0400_0415_image_validation_641_961.mat</td>
+                    <td > <i class="material-icons text-primary">collections</i></td>
+                    <td> <i class="material-icons text-danger">delete</i></td>
+                  </tr>
+                  <tr>
+                    <td>mitoem_r_0400_0415_image_validation_641_961.mat</td>
+                    <td > <i class="material-icons text-danger">collections</i></td>
+                    <td> <i class="material-icons text-danger">delete</i></td>
+                  </tr>
+                  <tr>
+                    <td>mitoem_r_0400_0415_image_validation_641_961.mat</td>
+                    <td > <i class="material-icons text-danger">collections</i></td>
+                    <td> <i class="material-icons text-danger">delete</i></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- <img mat-card-image class="main-image" src="../../../assets/img/m1.jpg" alt="Photo has error">
+            <mat-card-actions>
+              <button mat-button >Click here for data!</button>
+            </mat-card-actions> -->
+          </mat-card>
+        </div>
+  
+        <div class="col-md-6">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>Current Data</mat-card-title>
+            </mat-card-header>
+            <div class="card-body table-responsive">
+              <table class="table table-hover">
+                <tbody>
+                  <td>mitoem_r_0400_0415_image_validation_641_961.mat</td>
+                  <td ><i class="material-icons text-danger">share</i></td>
+                  <td> <i class="material-icons text-danger">delete</i></td>
+                  <td></td>
+                </tbody>
+              </table>
+            </div>
+            <!-- <img mat-card-image class="main-image" src="../../../assets/img/m2.jpg" alt="Photo has error"> -->
+            <mat-card-actions align="end">
+              <i class="material-icons text-primary">cloud_upload</i>
             </mat-card-actions>
           </mat-card>
         </div>

@@ -1,9 +1,8 @@
-import { image_analysis } from './../../model/filemodel';
 import { Component, OnInit } from "@angular/core";
 import { ConfirmdialogComponent } from "src/app/components/dialogs/confirmdialog/confirmdialog.component";
 import { ImageService } from "src/app/services/image.service";
 import { AlluserService } from '../../services/alluser.service';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from "@angular/material/dialog";
+import { MatDialog} from "@angular/material/dialog";
 import { RecommendationdialogComponent } from "../../components/dialogs/recommendationdialog/recommendationdialog.component";
 import { FiledetaildialogComponent } from "src/app/components/dialogs/filedetaildialog/filedetaildialog.component";
 import { FileService } from "src/app/services/fileservice.service";
@@ -30,37 +29,19 @@ export class ImagedirlistingComponent implements OnInit {
   fileList: FileDTO[];
   recommendationList: RecommendationDTO[];
   isDialogShowing = false;
-  metadata : any;
+  metadata: any;
   anlyzedData: any;
   deltedData: any;
-
-  constructor(private alluserService: AlluserService,imageService: ImageService, fileService: FileService, public dialog: MatDialog) 
-  {
+  updateData: any;
+  
+  constructor(private alluserService: AlluserService, imageService: ImageService, fileService: FileService, public dialog: MatDialog) {
     this.imageService = imageService;
     this.fileService = fileService;
   }
 
   ngOnInit(): void {
-    this.imageService.getImageData().subscribe((data: any[]) => {
+    this.imageService.getImageData({flag:0}).subscribe((data: any[]) => {
       this.metadata = data;
-    });
-    this.imageService.getImages().then((data) => {
-      this.htmlString = data;
-    });
-
-    this.fileService.getFiles().then((filData) => {
-      this.fileList = filData;
-      if (this.fileList.length > 0) {
-        let hasAnalayzedValue = false;
-        this.fileList.forEach((item) => {
-          if (item.status.toLowerCase() === "analyzed") {
-            hasAnalayzedValue = true;
-          }
-        });
-        console.log("Has analyzed: " + hasAnalayzedValue);
-        if (hasAnalayzedValue && !this.isDialogShowing)
-          this.getRecommendation("0");
-      }
     });
   }
 
@@ -96,7 +77,7 @@ export class ImagedirlistingComponent implements OnInit {
     //
   }
 
-  sendToAnalytics(filename, filepath) {
+  sendToAnalytics(filename, filepath, _id) {
     const dialogRef = this.dialog.open(ConfirmdialogComponent, {
       maxWidth: "450px",
       data: {
@@ -107,32 +88,32 @@ export class ImagedirlistingComponent implements OnInit {
           "'  for analytics.",
       },
     });
-    // console.log(".....>>>>", filename, filepath)
     dialogRef.afterClosed().subscribe((dialogResult) => {
       if (dialogResult) {
         showNotification("Please wait while your image is analyzing...", 2);
-        this.imageService.image_analysis({filename:filename, filepath: filepath}).subscribe((data: any[]) => {
-        this.anlyzedData = data;
-        console.log("---this.anlyzedData--- ", this.anlyzedData);
-        if(this.anlyzedData.status!= 0){
-          var vol = document.getElementById("volume");
-          var prec =  document.getElementById("precision");
-          var dscore =  document.getElementById("dicescore");
-          vol.innerHTML = "No of images in voulme: "+this.anlyzedData.data.imageVolume;
-          prec.innerHTML = "Precision: "+this.anlyzedData.data.precision;
-          dscore.innerHTML = "Dice Score: "+this.anlyzedData.data.diceSore;
-          showNotification(`Data analyzed successfully.`, 2);
-        }
-        else{
-          showNotification(this.anlyzedData.msg, 2);
-        }
-       
+        this.imageService.image_analysis({ filename: filename, filepath: filepath }).subscribe((data: any[]) => {
+          this.anlyzedData = data;
+          if (this.anlyzedData.status != 0) {
+            document.getElementById("volume_" + _id).innerHTML = "No of images in voulme: " + this.anlyzedData.data.imageVolume;;
+            document.getElementById("precision_" + _id).innerHTML = "Precision: " + this.anlyzedData.data.precision;
+            document.getElementById("dicescore_" + _id).innerHTML = "Dice Score: " + this.anlyzedData.data.diceSore;
+            showNotification(`Data analyzed successfully.`, 2);
+            document.getElementById("analysis_" + _id).innerHTML = 'Analyzed'
+            var analysis_btn = document.getElementById("analysis_" + _id) as HTMLButtonElement
+            analysis_btn.disabled = true;
+            this.imageService.update_exp_status({ _id : _id, diceSore: this.anlyzedData.data.diceSore, precision : this.anlyzedData.data.precision }).subscribe((data: any[]) => {
+              this.updateData = data;
+            });
+          }
+          else {
+            showNotification(this.anlyzedData.msg, 4);
+          }
         });
       }
     });
   }
 
-  deleteData(filename, _id){
+  deleteData(filename, _id) {
     const dialogRef = this.dialog.open(ConfirmdialogComponent, {
       maxWidth: "450px",
       data: {
@@ -147,13 +128,14 @@ export class ImagedirlistingComponent implements OnInit {
     dialogRef.afterClosed().subscribe((dialogResult) => {
       if (dialogResult) {
 
-        this.imageService.image_delete({_id}).subscribe((data: any[]) => {
-            console.log("image meta data deleting--> ", data);
-            this.deltedData = data;
-          });
+        this.imageService.image_delete({ _id : _id }).subscribe((data: any[]) => {
+          console.log("image meta data deleting--> ", data);
+          this.deltedData = data;
+        });
       }
     });
   }
+  
   getRecommendation(index) {
     this.fileService.getRecommendation().then((recommendationList) => {
       setTimeout(() => {

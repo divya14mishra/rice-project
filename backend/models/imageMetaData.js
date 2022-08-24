@@ -32,8 +32,9 @@ const image_data_schema = new mongoose.Schema(
     state: {
       type: String,
     },
-    staus: {
+    status: {
       type: String,
+      default : "Not analyzed"
     },
   },
   {

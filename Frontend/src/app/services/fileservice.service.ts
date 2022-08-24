@@ -21,17 +21,6 @@ export class FileService {
   }
 
 
-  async getFiles(): Promise<FileDTO[]> {
-    let fileList:FileDTO[]=JSON.parse(this.dummyFileList)
-    await this.http.get<FileDTO[]>( this.baseURL + "/retrieve_files").toPromise().then(data => fileList = data)
-      .catch((err: HttpErrorResponse) => {
-        console.log("Error while fetching file list")
-      });
-
-    console.log(fileList[0]);
-    return fileList;
-  }
-
   async getRecommendation(): Promise<RecommendationDTO[]> {
     let recommendationList:RecommendationDTO[] = JSON.parse(this.dummyRecommendations);
 

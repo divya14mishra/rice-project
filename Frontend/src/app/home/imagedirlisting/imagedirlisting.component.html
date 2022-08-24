@@ -101,18 +101,18 @@
             <p>Resolution: {{filedata.resolution}}</p>
             <!--comes with images, ask microscope people for image data  -->
             
-            <p id="volume"> No of images in voulme: {{filedata.imageVolume}}</p>
+            <p id='volume_{{filedata._id}}'> No of images in voulme: {{filedata.imageVolume}}</p>
             <!--comes with images, ask microscope people for image data  -->
 
-            <p id="precision"> Precision: {{filedata.precision}}</p>
+            <p id="precision_{{filedata._id}}"> Precision: {{filedata.precision}}</p>
 
-            <p id="dicescore"> Dice Score: {{filedata.diceSore}}</p>
+            <p id="dicescore_{{filedata._id}}"> Dice Score: {{filedata.diceSore}}</p>
 
             <p>Share Staus: {{filedata.shareStatus}}</p>
 
           </mat-card-content>
           <div class="w-100 d-flex custom-btn-group">
-            <button type="button" class="btn btn-sm btn-danger px-2" (click)="sendToAnalytics(filedata.filename, filedata.filepath)">Send Analysis</button>
+            <button type="button" class="btn btn-sm btn-danger px-2" id="analysis_{{filedata._id}}" (click)="sendToAnalytics(filedata.filename, filedata.filepath, filedata._id)">Send Analysis</button>
             <button type="button" class="btn btn-sm btn-danger px-2">Share</button>
             <button type="button" class="btn btn-sm btn-danger px-2">Visualise</button>
             <button type="button" class="btn btn-sm btn-danger px-2" (click)="deleteData(filedata.filename, filedata._id)">Delete</button>

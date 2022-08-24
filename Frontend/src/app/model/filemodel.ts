@@ -3,6 +3,14 @@ export class del_img_id{
      _id:String
 }
 
+export class imageMetaData{
+     flag:Number;
+}
+export class update_exp_status{
+     _id:String;
+     diceSore:String;
+     precision:String;
+}
 export class Signup {
      username: String
      email: String;

@@ -71,7 +71,7 @@ const update = async(query_params)=>{
             update = await groupModel.updateMany(where, updateData);
             break;
         default:
-            update = await groupModel.findOneAndUpdate(where, updateData, {upsert:true, new : true});                   
+            update = await groupModel.findOneAndUpdate(where, updateData, {upsert:false});                   
             break;
     }
     return update;
