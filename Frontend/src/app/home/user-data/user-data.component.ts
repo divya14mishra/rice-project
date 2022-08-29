@@ -57,7 +57,6 @@ export class UserDataComponent implements OnInit {
     for(let img of this.multipleImages){
       formData.append('files', img);
     }
-
     this.http.post<any>('http://localhost:3000/multipleFiles', formData).subscribe(
       (res) =>{
         console.log("status", res.status)
