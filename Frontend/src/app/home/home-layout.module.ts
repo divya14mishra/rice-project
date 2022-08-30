@@ -22,6 +22,7 @@ import { ImagedirlistingComponent } from './imagedirlisting/imagedirlisting.comp
 import { RecommendationdialogComponent } from '../components/dialogs/recommendationdialog/recommendationdialog.component';
 import { SshKeyComponent } from './ssh-key/ssh-key.component';
 import { UserDataComponent } from './user-data/user-data.component';
+import { FileDataComponent } from './file-data/file-data.component';
 
 @NgModule({
   imports: [
@@ -48,7 +49,8 @@ import { UserDataComponent } from './user-data/user-data.component';
     ImagedirlistingComponent,
     RecommendationdialogComponent,
     SshKeyComponent,
-    UserDataComponent
+    UserDataComponent,
+    FileDataComponent
   ]
 })
 
