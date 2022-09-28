@@ -38,6 +38,7 @@ import {MatTreeModule} from '@angular/material/tree';
     CreatePasswordComponent
   ],
   imports: [
+    MatTreeModule,
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -53,7 +54,6 @@ import {MatTreeModule} from '@angular/material/tree';
     MatSelectModule,
     ReactiveFormsModule,
     ChartsModule,
-    MatTreeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

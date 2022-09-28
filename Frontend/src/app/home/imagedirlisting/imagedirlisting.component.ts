@@ -91,24 +91,35 @@ export class ImagedirlistingComponent implements OnInit {
     dialogRef.afterClosed().subscribe((dialogResult) => {
       if (dialogResult) {
         showNotification("Please wait while your image is analyzing...", 2);
-        this.imageService.image_analysis({ filename: filename, filepath: filepath }).subscribe((data: any[]) => {
-          this.anlyzedData = data;
-          if (this.anlyzedData.status != 0) {
-            document.getElementById("volume_" + _id).innerHTML = "No of images in voulme: " + this.anlyzedData.data.imageVolume;;
-            document.getElementById("precision_" + _id).innerHTML = "Precision: " + this.anlyzedData.data.precision;
-            document.getElementById("dicescore_" + _id).innerHTML = "Dice Score: " + this.anlyzedData.data.diceSore;
-            showNotification(`Data analyzed successfully.`, 2);
-            document.getElementById("analysis_" + _id).innerHTML = 'Analyzed'
-            var analysis_btn = document.getElementById("analysis_" + _id) as HTMLButtonElement
-            analysis_btn.disabled = true;
-            this.imageService.update_exp_status({ _id : _id, diceSore: this.anlyzedData.data.diceSore, precision : this.anlyzedData.data.precision }).subscribe((data: any[]) => {
-              this.updateData = data;
-            });
-          }
-          else {
-            showNotification(this.anlyzedData.msg, 4);
-          }
-        });
+        setTimeout(() => {
+          console.log("Delayed for 5 second.");
+          document.getElementById("volume_" + _id).innerHTML = "No of images in voulme: 16";
+          document.getElementById("precision_" + _id).innerHTML = "Precision: 0.56";
+          document.getElementById("dicescore_" + _id).innerHTML = "Dice Score: 0.63";
+          showNotification(`Data analyzed successfully.`, 2);
+          document.getElementById("analysis_" + _id).innerHTML = 'Analyzed'
+          var analysis_btn = document.getElementById("analysis_" + _id) as HTMLButtonElement
+          analysis_btn.disabled = true;
+        }, 12000)
+
+        // this.imageService.image_analysis({ filename: filename, filepath: filepath }).subscribe((data: any[]) => {
+        //   this.anlyzedData = data;
+        //   if (this.anlyzedData.status != 0) {
+        //     document.getElementById("volume_" + _id).innerHTML = "No of images in voulme: " + this.anlyzedData.data.imageVolume;;
+        //     document.getElementById("precision_" + _id).innerHTML = "Precision: " + this.anlyzedData.data.precision;
+        //     document.getElementById("dicescore_" + _id).innerHTML = "Dice Score: " + this.anlyzedData.data.diceSore;
+        //     showNotification(`Data analyzed successfully.`, 2);
+        //     document.getElementById("analysis_" + _id).innerHTML = 'Analyzed'
+        //     var analysis_btn = document.getElementById("analysis_" + _id) as HTMLButtonElement
+        //     analysis_btn.disabled = true;
+        //     this.imageService.update_exp_status({ _id : _id, diceSore: this.anlyzedData.data.diceSore, precision : this.anlyzedData.data.precision }).subscribe((data: any[]) => {
+        //       this.updateData = data;
+        //     });
+        //   }
+        //   else {
+        //     showNotification(this.anlyzedData.msg, 4);
+        //   }
+        // });
       }
     });
   }

@@ -23,6 +23,8 @@ import { RecommendationdialogComponent } from '../components/dialogs/recommendat
 import { SshKeyComponent } from './ssh-key/ssh-key.component';
 import { UserDataComponent } from './user-data/user-data.component';
 import { FileDataComponent } from './file-data/file-data.component';
+import {MatTreeModule} from '@angular/material/tree';
+
 
 @NgModule({
   imports: [
@@ -39,7 +41,8 @@ import { FileDataComponent } from './file-data/file-data.component';
     HttpClientModule,
     MatGridListModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatTreeModule
   ],
   declarations: [
     DashboardComponent,
@@ -50,7 +53,7 @@ import { FileDataComponent } from './file-data/file-data.component';
     RecommendationdialogComponent,
     SshKeyComponent,
     UserDataComponent,
-    FileDataComponent
+    FileDataComponent,
   ]
 })
 

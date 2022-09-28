@@ -10,11 +10,14 @@ declare interface RouteInfo {
 export const ROUTES: RouteInfo[] = [
     { path: 'dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
     { path: 'experiments', title: 'Experiments',  icon:'collections', class: '' },
-    // { path: 'user-profile', title: 'Profile',  icon:'person', class: '' },  
-    { path: 'ssh-key', title: 'SSH-key',  icon:'key', class: '' },
+    { path: 'ssh-key', title: 'SEM',  icon:'key', class: '' },
     { path: 'user-data', title: 'Data',  icon:'dataset', class: '' },
     { path: 'user-management', title: 'User Management',  icon:'group', class: '' },
+    { path: 'file-data', title: 'File Data',  icon:'dataset', class: '' } ,
+
 ];
+    // { path: 'user-profile', title: 'Profile',  icon:'person', class: '' },  
+
 
 @Component({
   selector: 'app-sidebar',
