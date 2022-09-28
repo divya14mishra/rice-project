@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ConfirmdialogComponent } from "src/app/components/dialogs/confirmdialog/confirmdialog.component";
+import { ResultDialogComponent } from "src/app/components/dialogs/result-dialog/result-dialog.component";
 import { ImageService } from "src/app/services/image.service";
 import { AlluserService } from '../../services/alluser.service';
 import { MatDialog} from "@angular/material/dialog";
@@ -92,15 +93,22 @@ export class ImagedirlistingComponent implements OnInit {
       if (dialogResult) {
         showNotification("Please wait while your image is analyzing...", 2);
         setTimeout(() => {
-          console.log("Delayed for 5 second.");
+          console.log("Delayed for 10 second.");
           document.getElementById("volume_" + _id).innerHTML = "No of images in voulme: 16";
           document.getElementById("precision_" + _id).innerHTML = "Precision: 0.56";
-          document.getElementById("dicescore_" + _id).innerHTML = "Dice Score: 0.63";
+          document.getElementById("dicescore_" + _id).innerHTML = "Dice Score: 0.56" ;
           showNotification(`Data analyzed successfully.`, 2);
           document.getElementById("analysis_" + _id).innerHTML = 'Analyzed'
           var analysis_btn = document.getElementById("analysis_" + _id) as HTMLButtonElement
           analysis_btn.disabled = true;
-        }, 12000)
+          const dialog2 = this.dialog.open(ResultDialogComponent, {
+            maxWidth: "600px",
+          });
+          dialog2.afterClosed().subscribe((dialogResult) => {
+            if (dialogResult) {
+              console.log("dialogResult---->>  ",dialogResult );
+            }});
+        }, 10000)
 
         // this.imageService.image_analysis({ filename: filename, filepath: filepath }).subscribe((data: any[]) => {
         //   this.anlyzedData = data;

@@ -8,8 +8,8 @@ import { Chart } from 'chart.js';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  label = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
-  data = [12, 10, 7, 5, 2, 3];
+  label = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'];
+  data = [12, 10, 7, 5, 2, 3, 6];
 
   constructor() { }
   

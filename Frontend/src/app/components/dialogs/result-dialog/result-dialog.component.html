@@ -1,0 +1,38 @@
+<div>
+  <p mat-dialog-title>{{ "Result" }}</p>
+  <div mat-dialog-content>
+    <img src="../../../../assets/img/Mito1.jpg" alt="Mitochondria" />
+    <br><br>
+    <p>
+      Based on your image analysis result, here are your recommendation parameters:
+    </p>
+    <p>Recommendations:</p>
+    <div>
+        <p>Maginification:</p>
+        <span class="d-flex justify-content-around">
+        <input type="radio" id="mg1" name="mg1" value="800">
+        <label for="mg1" >800x</label><br>
+        <input type="radio" id="mg2" name="mg2" value="1000">
+        <label for="mg2">1000x</label><br>  
+        <input type="radio" id="mg3" name="mg3" value="1200">
+        <label for="mg3">1200x</label>
+        <br>  
+    </span>
+        <p>Electron beam:</p>
+        <span class="d-flex justify-content-around">
+        <input type="radio" id="eb1" name="eb1" value="5KV">
+        <label for="eb1">5KV</label><br>
+        <input type="radio" id="eb2" name="eb2" value="10KV">
+        <label for="eb2">10KV</label><br>  
+        <input type="radio" id="eb3" name="eb3" value="15KV">
+        <label for="eb3">15KV</label>
+    </span>
+    </div>
+
+    <div mat-dialog-actions style="justify-content: space-evenly">
+      <button class="btn btn-primary" (click)="onConfirm()">Confirm</button>
+      <button class="btn btn-danger" (click)="onDismiss()">Cancel</button>
+    </div>
+    <div></div>
+  </div>
+</div>

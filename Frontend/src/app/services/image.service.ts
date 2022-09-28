@@ -21,7 +21,7 @@ export class ImageService {
   
   image_analysis(image_analysis: image_analysis){
     // console.log('image_analysis ' + JSON.stringify(image_analysis));
-    return this.http.post('http://35.170.186.173:8080/', image_analysis)
+    return this.http.post('http://54.208.113.77:8080/', image_analysis)
   }
 
   image_delete(del_img_id : del_img_id){

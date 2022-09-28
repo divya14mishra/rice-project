@@ -1,8 +1,24 @@
-import { SelectionModel } from '@angular/cdk/collections';
-import { FlatTreeControl } from '@angular/cdk/tree';
-import { Component, Injectable } from '@angular/core';
-import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
-import { BehaviorSubject } from 'rxjs';
+// import { Component, OnInit } from '@angular/core';
+
+// @Component({
+//   selector: 'app-file-data',
+//   templateUrl: './file-data.component.html',
+//   styleUrls: ['./file-data.component.css']
+// })
+// export class FileDataComponent implements OnInit {
+
+//   constructor() { }
+
+//   ngOnInit(): void {
+//   }
+
+// }
+
+import {SelectionModel} from '@angular/cdk/collections';
+import {FlatTreeControl} from '@angular/cdk/tree';
+import {Component, Injectable} from '@angular/core';
+import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
+import {BehaviorSubject} from 'rxjs';
 
 /**
  * Node for to-do item
@@ -23,19 +39,17 @@ export class TodoItemFlatNode {
  * The Json object for to-do list data.
  */
 const TREE_DATA = {
-  Mitochondria: {
-    prjectName: {
-      Experiments: ['Cook dinner', 'Read the Material Design spec', 'Upgrade Application to Angular'],
-      "Processed Data": ['aaa', 'bbbb']
+  Groceries: {
+    'Almond Meal flour': null,
+    'Organic eggs': null,
+    'Protein Powder': null,
+    Fruits: {
+      Apple: null,
+      Berries: ['Blueberry', 'Raspberry'],
+      Orange: null,
     },
-
   },
-  CNT: {
-    prjectName: {
-      Experiments: ['Cook dinner', 'Read the Material Design spec', 'Upgrade Application to Angular'],
-      "Processed Data": ['aaa', 'bbbb']
-    }
-  },
+  Reminders: ['Cook dinner', 'Read the Material Design spec', 'Upgrade Application to Angular'],
 };
 
 /**
@@ -43,14 +57,11 @@ const TREE_DATA = {
  * Each node in Json object represents a to-do item or a category.
  * If a node is a category, it has children items and new items can be added under the category.
  */
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ChecklistDatabase {
   dataChange = new BehaviorSubject<TodoItemNode[]>([]);
 
   get data(): TodoItemNode[] {
-    console.log("---> ", this.dataChange, "----> ", this.dataChange.value);
     return this.dataChange.value;
   }
 
@@ -71,7 +82,7 @@ export class ChecklistDatabase {
    * Build the file structure tree. The `value` is the Json object, or a sub-tree of a Json object.
    * The return value is the list of `TodoItemNode`.
    */
-  buildFileTree(obj: { [key: string]: any }, level: number): TodoItemNode[] {
+  buildFileTree(obj: {[key: string]: any}, level: number): TodoItemNode[] {
     return Object.keys(obj).reduce<TodoItemNode[]>((accumulator, key) => {
       const value = obj[key];
       const node = new TodoItemNode();
@@ -92,7 +103,7 @@ export class ChecklistDatabase {
   /** Add an item to to-do list */
   insertItem(parent: TodoItemNode, name: string) {
     if (parent.children) {
-      parent.children.push({ item: name } as TodoItemNode);
+      parent.children.push({item: name} as TodoItemNode);
       this.dataChange.next(this.data);
     }
   }
